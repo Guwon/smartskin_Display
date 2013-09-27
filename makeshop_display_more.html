@@ -74,7 +74,7 @@ min-height:100px;
 $(function(){
 	if($("#smartSkinmainDisplayPrd1").length){
 		setTimeout(function(){
-			/* 상품 div id, 한페이지당 보여줄 갯수 , more버튼 적용(true,false) */
+			/* smartskinMainDisplayLazyLoading_more(상품 div Id명 일련번호, default 노출 상품갯수 , 더보기 버튼 적용[true,false]) */
 			smartskinMainDisplayLazyLoading_more(1,15,true);
 			smartskinMainDisplayLazyLoading_more(2,18,false);
 			
@@ -118,7 +118,6 @@ function smartskinMainDisplayLazyLoading_more(id,limit,more){
 				html+="</div>";
 				
 				if(key<total-1){
-					//console.log(currentLimit,key,total, limit);
 					html+='<div id="smartSkinmainDisplayMorePrd" style="display:none">';
 					html+='<ul data-type="horizontal" data-open="on" class="items clearfix">';
 				}
@@ -138,7 +137,7 @@ function smartskinMainDisplayLazyLoading_more(id,limit,more){
 			html+='<div class="smartSkinmainDisplayMorebtn"><span>더보기</span></div>';
 		}
 		html+="</div>";
-		//console.log(html);
+
 		$("#smartSkinmainDisplayPrd"+id).html(html);
 		$("#smartSkinmainDisplayPrd"+id).find(".thumb-img").each(function(){
 			var data_src=$(this).find("img").attr("data-src");
