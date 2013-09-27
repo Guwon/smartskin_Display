@@ -66,12 +66,30 @@ background-repeat:no-repeat;
 background-position:center;
 min-height:100px;
 }
+
+/*더보기 css */
+.smartSkinmainDisplayMorebtn {
+width: 100%;
+text-align: center;
+}
+
+.smartSkinmainDisplayMorebtn span {
+display: inline-block;
+width: 150px;
+border: 1px solid #d7d7d7;
+margin: 10px 0 10px;
+padding: 3px 0;
+background: #ececec;
+font-size: 11px;
+font-weight: bold;
+vertical-align: text-bottom;
+}
 </style>
 
 <!-- 자바스크립트 -->
 
 
-$(function(){
+$(document).ready(function(){
 	if($("#smartSkinmainDisplayPrd1").length){
 		setTimeout(function(){
 			/* smartskinMainDisplayLazyLoading_more(상품 div Id명 일련번호, default 노출 상품갯수 , 더보기 버튼 적용[true,false]) */
