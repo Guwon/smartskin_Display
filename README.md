@@ -8,9 +8,9 @@ Editor : Guwon Jeon
 Smartskin Inc | www.smartskin.co.kr
 
 ===============================================
-- ¸ÞÀÎÁø¿­ Áø¿­ ¹æ½Ä
-- »óÇ°¸®½ºÆ® Áø¿­ ¹æ½Ä 
-
+- ë©”ì¸ì§„ì—´ ì§„ì—´ ë°©ì‹
+- ìƒí’ˆë¦¬ìŠ¤íŠ¸ ì§„ì—´ ë°©ì‹ 
+ 
 
 
 
