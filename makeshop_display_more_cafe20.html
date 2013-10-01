@@ -1,0 +1,128 @@
+<div class="{{$sContainerStyle}}">
+    <h2 class="mainDisplayTitle">{{$sSubject}}</h2>
+<textarea id="html_{{$sDisplayId}}">
+    <ul class="{{$sDisplayStyle}}" id="{{$sDisplayId}}">{{$sPrdLoop}}</ul>
+</textarea>
+<div id="{{$sDisplayId}}">
+<ul class="{{$sDisplayStyle}}" ></ul>
+    {{$sBtnMore}}
+</div>
+</div>
+
+<style type="text/css">
+
+/*더보기 css */
+.smartSkinmainDisplayMorebtn {
+width: 100%;
+text-align: center;
+}
+
+.smartSkinmainDisplayMorebtn span {
+display: inline-block;
+width: 150px;
+border: 1px solid #d7d7d7;
+margin: 10px 0 10px;
+padding: 3px 0;
+background: #ececec;
+font-size: 11px;
+font-weight: bold;
+vertical-align: text-bottom;
+}
+</style>
+
+DomReady.ready(function() {
+
+	
+	// main page display Slice, Trigger
+	smartskinMainAjaxViewer(4,9);
+	smartskinMainAjaxViewer(9,9);
+	smartskinMainAjaxViewer(8,6);
+	smartskinMainAjaxViewer(5,6);
+	smartskinMainAjaxViewer(7,6);
+	smartskinMainAjaxViewer(6,6);
+});
+
+function smartskinMainAjaxViewer(num,page){
+	mainDisplayId = $('html_display_'+num);
+	if(mainDisplayId){
+		var textareaValue = $('html_display_'+num).value;
+		
+		parser = new DOMParser();
+		textareaValue = parser.parseFromString(textareaValue, "text/html");
+		
+		mainUlElement = textareaValue.getElementById('display_'+num);
+		mainLiElement = mainUlElement.children;
+		mainLiElementLength = mainUlElement.children.length;
+		
+		//pager -- To Do list : smartskin.co.kr
+		
+		var html='<div><ul class="grid3">';
+		var more_index=1;
+		var currentLimit=page;
+		for(i=0; i<mainLiElementLength; i++){
+			if(i>=page){
+				var img=mainLiElement[i].getElementsBySelector(".thumbnail img")[0].src;
+				mainLiElement[i].getElementsBySelector(".thumbnail img")[0].src='';
+				mainLiElement[i].getElementsBySelector(".thumbnail img")[0].writeAttribute("data-src",img);
+			}
+			if(i==currentLimit-1){
+				html+="<li>"+mainLiElement[i].innerHTML+"</li>";
+				html+="</ul>";
+				html+="</div>";
+				
+				if(i<mainLiElementLength-1){
+					html+='<div  id="smartSkinmainDisplayMorePrd" style="display:none">';
+					html+='<ul class="grid3">';
+				}
+				
+				more_index++;
+				currentLimit=page*more_index;
+			}else if(i<currentLimit){
+				html+="<li>"+mainLiElement[i].innerHTML+"</li>";
+				if(i==mainLiElementLength-1){
+					html+="</ul>";
+					html+="</div>";
+				}
+			}
+		}
+		
+		if(page<mainLiElementLength){
+			html+='<div onclick="smartSkinmainDisplayMoreEvent(this,'+num+')" class="smartSkinmainDisplayMorebtn"><span>더보기</span></div>';
+		}
+		
+		if(html)
+			$("display_"+num).innerHTML=html;
+		
+	}
+}
+
+function smartSkinmainDisplayMoreEvent(obj,num){
+	var total=$("display_"+num).children.length;
+	var mainLiEl=$("display_"+num).children;
+	var fisrt_el=true;
+	var ch_total=0;
+	var img='';
+	for(var i=0;i<total; i++){
+		if(mainLiEl[i].id=="smartSkinmainDisplayMorePrd" && mainLiEl[i].style.display=="none"){
+			ch_total++;
+			if(fisrt_el){
+				fisrt_el=false;
+				var el=mainLiEl[i].getElementsBySelector("li");
+				var len=mainLiEl[i].getElementsBySelector("li").length;
+				for(var l=0; l<len; l++){
+					img=el[l].getElementsBySelector(".thumbnail img")[0].readAttribute("data-src");
+					el[l].getElementsBySelector(".thumbnail img")[0].src=img;
+					el[l].getElementsBySelector(".thumbnail img")[0].writeAttribute("data-src","");
+				}
+
+				mainLiEl[i].style.display="block";
+				
+			}
+		}
+	}
+	
+	if(ch_total==1){
+		obj.style.display="none";
+	}
+	
+}
