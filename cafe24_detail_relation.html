@@ -176,3 +176,257 @@ line-height:50px;
 .relation .mButton-relation{
 padding-top:10px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** 추가 **/
+#left-menu li{
+padding:0px;
+}
+#left-menu li a{
+display:block;
+width:90;
+padding: 18px 8px;
+}
+
+.mListTitle h1{
+padding: 0px 5px 0px 5px;
+font-size:18px;
+}
+
+.mPagenate p{ 
+min-width:22px;
+}
+
+.mListTitle{
+padding: 10px 5px 0px 5px;
+}
+
+/** 상품 리뷰 게시판 이미지 노출 **/	
+border/product/list.html
+	<li>
+		<p class="descriptions">
+
+			
+            <a href="/board/product/read.html{$param_read}">
+				<div class="smartskinProductBoardList1">
+				{$product_img}
+				</div>
+    			<div class="smartskinProductBoardList2">
+				<strong class="point {$point_display|display}"><img src="http://img.echosting.cafe24.com/mobileWeb/common/ico_star{$point_count}.png" alt="{$point_count}점" width="50" height="8"></strong>
+    			<strong class="id" title="작성자">{$writer}</strong>
+    			<strong class="date {$date_display|display}" title="작성일">{$write_date}</strong>
+    			<span class="summary">{$icon_re}{$icon_lock} <font color="#e30c6c">{$product_name}</font>&nbsp;{$subject|cut:22,...} {$icon_new}{$icon_hit}{$icon_file}{$comment_count}</span>
+				</div>
+				
+				
+            </a>
+
+		</p>
+	</li>
+
+.smartskinProductBoardList1 img {
+width: 100%;
+}
+
+.smartskinProductBoardList1{
+float: left;
+width: 30%;
+}
+
+.smartskinProductBoardList2 {
+float: left;
+padding-left: 5px;
+width: 60%;
+}
+		
+/** 햄버거 버튼 2차 카테고리 적용
+
+<li class="basementCon" onclick="BasementSubmenu(this)">
+	<span class="submenu_btn" >+</span><span>ACCESSORIES</span>
+	<dl class="submenu">
+		<dt><a href="http://www.white-fox.co.kr/m/product_list.html?xcode=077&type=M&mcode=001&viewtype=list">SHOES</a></dt>
+		<dt><a href="http://www.white-fox.co.kr/m/product_list.html?xcode=077&type=M&mcode=002&viewtype=list">BAG</a></dt>
+		<dt><a href="http://www.white-fox.co.kr/m/product_list.html?xcode=077&type=M&mcode=003&viewtype=list">ACCESSORIES</a></dt>
+		<dt><a href="http://www.white-fox.co.kr/m/product_list.html?xcode=077&type=M&mcode=004&viewtype=list">SWIM WEAR</a></dt>
+	</dl>
+</li>
+
+.basementCon {
+color: #fff !important;
+}
+
+#left-menu li > .submenu_btn {
+padding: 0 5px 0 0px;
+color: #f1ec6a;
+}
+
+#left-menu li > .submenu {
+padding: 0 0px 0 20px;
+display: none;
+}
+
+#left-menu li > .submenu a{
+padding:0px;
+color:#fff;
+}
+
+/* 햄버거 2차 카테고리 
+================================= */
+function BasementSubmenu(obj){ 
+
+	if($(obj).find("dl").css("display")=="block"){
+		$(obj).find("dl").css("display","none");
+		$(obj).find(".submenu_btn").html("+");
+	}else{
+		$(obj).find("dl").css("display","block");
+		$(obj).find(".submenu_btn").html("-");
+	}
+}
+
+/* 베스트 상품 추가 */
+<!-- 스마트스킨 베스트 상품 노출 : 2013-09-26 -->
+<style>
+.smartskinCategoryBestList .smartskinBestListTitle{
+text-transform:uppercase;
+text-align:center;
+font-size:15px;
+font-weight:bold;
+color:#222;
+padding:9px 0;
+border-bottom:1px solid #999;
+margin-bottom:0;
+}
+.smartskinCategoryBestList ul{
+width:100%;
+text-align:center;
+vertical-align: top;
+padding:5px 0;
+background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAI0lEQVQIW2NkwASSjGhikkD+c2RBsABIEUwQLgATRBEACQIApYEEH/XymTkAAAAASUVORK5CYII=');
+}
+.smartskinCategoryBestList li{
+display:inline-block;
+width:32%;
+font-size: 12px;
+color: #222;
+
+margin-bottom:15px;
+}
+.smartskinCategoryBestList li img{
+width:100%;
+}
+.smartskinCategoryBestList li p{
+margin-bottom:5px;
+line-height:18px;
+}
+
+#container .breadcrumb-cat {
+border-top: 1px solid #e3e3e3;
+}
+</style>
+<!--/if_best_product/-->
+<div class="smartskinCategoryBestList">
+<p class="smartskinBestListTitle">
+<!--/if_cate1_name/--><!--/cate1_name/--><!--/else_if/-->
+<!--/if_cate2_name/--><!--/cate2_name/--><!--/else_if/-->
+<!--/if_cate3_name/--><!--/cate3_name/--><!--/end_if/-->
+ | Best Of Best
+</p>
+    <ul>
+	<!--/loop_best_product(6)/-->
+	<li onclick="location.href='<!--/best_product@link/-->'">
+	    <p><img src="<!--/best_product@image_s/-->"></p>
+		    <p><!--/notag/best_product@name(50,..)/--></p>
+		    <p>
+		    <!--/if_best_product@price_discount/-->
+			할인가: <!--/best_product@price_discount/--> 원(<del><!--/best_product@price_sell/--></del>)
+		    <!--/else/-->
+		    	상품가: <!--/best_product@price_sell/--> 원
+		    <!--/end_if/-->
+		    </p>
+	</li>
+	<!--/end_loop/-->
+    </ul>
+</div>
+<!--/end_if/-->
+
+/* 카카오 sale 스타일 */
+<script type="text/javascript">
+	var listLoaderPageUri = location.href;
+	var listSelectedPageName = listLoaderPageUri.search('xcode=086');
+	
+	if(listSelectedPageName!=-1){
+		$(".smartskinListPageUIDesign_cacao").hide();
+	}
+
+	var setIntervalGoods=setInterval(function(){
+	 if($(".smartskinListPageUIDesign_cacao li").length){
+		clearInterval(setIntervalGoods);
+		if(listSelectedPageName!=-1){
+			$(".smartskinListPageUIDesign_cacao").show();
+			$(".smartskinListPageUIDesign_cacao").attr("id","smartskinListPageUIDesign_cacaoId");
+			$("#smartskinListPageUIDesign_cacaoId li >div:last-child").css("display","block");
+			$("#container .wrapper > nav").hide();
+			$("#product-list .results .tool-wrap").css("height","15px");
+			$("#container #product-list .tool-wrap .links").hide();
+			
+		}else{
+			$(".smartskinListPageUIDesign_cacao li").each(function(index) {
+				var index = index+1;
+				if(index==4 || index==13){
+					 $(this).css('width','66.66%');
+					 $(this).css('height','300px');
+				}
+			
+			});
+		}
+	 }
+	 
+	},1000);
+
+</script>
+
+#smartskinListPageUIDesign_cacaoId {
+padding: 10px 15px 10px 15px;
+}
+
+#smartskinListPageUIDesign_cacaoId li {
+width: 100%;
+height: 100%;
+background: #fff;
+text-align: center;
+border: 1px solid #D0CBCE;
+margin-bottom: 15px;
+border-radius: 5px;
+-webkit-box-shadow: 0px 0px 6px rgba(135,139,144,0.4);
+-moz-box-shadow: 0px 0px 6px rgba(135,139,144,0.4);
+box-shadow: 0px 0px 6px rgba(135,139,144,0.4);
+}
+
+#smartskinListPageUIDesign_cacaoId li >div:first-child {
+width: 96%;
+height: 350px;
+position: relative;
+margin: 8px 0 0 0;
+box-shadow: none;
+-webkit-box-shadow: none;
+}
+
+#smartskinListPageUIDesign_cacaoId li >div:last-child {
+height: 60px;
+border: none;
+background: #fff;
+border-bottom: none;
+box-shadow: none;
+-webkit-box-shadow: none;
+}
