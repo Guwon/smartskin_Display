@@ -337,13 +337,17 @@ border-top: 1px solid #e3e3e3;
 <!--/if_best_product/-->
 <div class="smartskinCategoryBestList">
 <p class="smartskinBestListTitle">
-<!--/if_cate1_name/--><!--/cate1_name/--><!--/else_if/-->
-<!--/if_cate2_name/--><!--/cate2_name/--><!--/else_if/-->
-<!--/if_cate3_name/--><!--/cate3_name/--><!--/end_if/-->
+<!--/if_cate3_name/--><!--/cate3_name/-->
+<!--/else/-->
+	<!--/if_cate2_name/--><!--/cate2_name/-->
+	<!--/else/-->
+		<!--/if_cate1_name/--><!--/cate1_name/--><!--/end_if/-->
+	<!--/end_if/-->
+<!--/end_if/-->
  | Best Of Best
 </p>
     <ul>
-	<!--/loop_best_product(6)/-->
+	<!--/loop_best_product(3)/-->
 	<li onclick="location.href='<!--/best_product@link/-->'">
 	    <p><img src="<!--/best_product@image_s/-->"></p>
 		    <p><!--/notag/best_product@name(50,..)/--></p>
@@ -360,7 +364,7 @@ border-top: 1px solid #e3e3e3;
 </div>
 <!--/end_if/-->
 
-/* 카카오 sale 스타일 */
+/* 카카오 스타일  카카오 sale 스타일 */
 <script type="text/javascript">
 	var listLoaderPageUri = location.href;
 	var listSelectedPageName = listLoaderPageUri.search('xcode=086');
@@ -430,3 +434,147 @@ border-bottom: none;
 box-shadow: none;
 -webkit-box-shadow: none;
 }
+
+/* 일반 코드 카카오 스타일 적용 */
+
+<script type="text/javascript">
+	var listLoaderPageUri = location.href;
+	var listSelectedPageName = listLoaderPageUri.search('xcode=037');
+	
+	if(listSelectedPageName!=-1){
+		$(".smartskinCategoryBestList").hide();
+	}
+
+	var setIntervalGoods=setInterval(function(){
+	 if($(".smartskinListPageUIDesign li").length){
+		clearInterval(setIntervalGoods);
+		if(listSelectedPageName!=-1){
+			$(".smartskinListPageUIDesign").show();
+			$(".smartskinListPageUIDesign").attr("id","smartskinListPageUIDesign_cacaoId");
+			$("#smartskinListPageUIDesign_cacaoId li >div:last-child").css("display","block");
+			$("#smartskinListPageUIDesign_cacaoId li").each(function(){
+				var img=$(this).find(".smartskinListThumbnail img").attr("src");
+				$(this).find(".smartskinListThumbnail").html('');
+				$(this).find(".smartskinListThumbnail").css("background","url('"+img+"')");
+				$(this).find(".smartskinListThumbnail").css("background-position","center");
+				$(this).find(".smartskinListThumbnail").css("background-size","100%");
+				$(this).find(".smartskinListThumbnail").css("background-repeat","no-repeat");
+				
+				var price=$(this).find(".smartskinListProductPrice").text();
+				var price_chk = price.search('할인가');
+				console.log(price_chk);
+				
+				var p='';
+				var d='';
+				var html='';
+				if(price_chk!=-1){
+					price=price.split("상품가 :");
+					p=price[0].replace("할인가 : ","");
+					p=p.replace(/(^\s*)|(\s*$)/g, "");
+					console.log("0:",price[0]," 1:",price[1]);
+					
+					d=price[1].replace(/(^\s*)|(\s*$)/g, "");
+					html="<del>"+d+"</del>"+" "+p;
+				}else{
+					p=price.replace("상품가 : ","");
+					p=p.replace(/(^\s*)|(\s*$)/g, "");
+					html=p;
+				}
+				
+				$(this).find(".smartskinListProductPrice").html(html);
+			});
+			
+			$(".smartskinListPageContentContainer span.smartskinListProductReviewCounter").css("display","none");
+			$("#container .wrapper > nav").hide();
+			$("#product-list .results .tool-wrap").css("height","15px");
+			$("#container #product-list .tool-wrap .links").hide();
+			
+			$("#smartskinListPageUIDesign_cacaoId li .smartskinListProductPrice").css("font-size","26px");
+			$("#smartskinListPageUIDesign_cacaoId li .smartskinListProductPrice del").css("font-size","18px");
+			$("#smartskinListPageUIDesign_cacaoId li .smartskinListProductPrice del").css("color","#666");
+			
+		}
+	 }
+	 
+	},1000);
+
+</script>
+
+
+
+<style>
+#smartskinListPageUIDesign_cacaoId {
+padding: 10px 15px 10px 15px;
+}
+
+#smartskinListPageUIDesign_cacaoId{
+width:100%;
+}
+
+#smartskinListPageUIDesign_cacaoId li {
+width: 100%;
+height: 100%;
+background: #fff;
+text-align: center;
+border: 1px solid #D0CBCE;
+margin-bottom: 15px;
+border-radius: 5px;
+-webkit-box-shadow: 0px 0px 6px rgba(135,139,144,0.4);
+-moz-box-shadow: 0px 0px 6px rgba(135,139,144,0.4);
+box-shadow: 0px 0px 6px rgba(135,139,144,0.4);
+}
+
+#smartskinListPageUIDesign_cacaoId li img{
+width:100%;
+}
+
+#smartskinListPageUIDesign_cacaoId li{
+position:relative;
+text-align:center;
+height:440px;
+width:100%;
+}
+
+
+#smartskinListPageUIDesign_cacaoId li .smartskinListProductName{
+font-weight: bold;
+font-size: 18px;
+color: #666;
+position: absolute;
+left: 5px;
+margin: 5px 0 0 6px;
+}
+
+#smartskinListPageUIDesign_cacaoId li .smartskinListProductPrice:before{
+content:'';
+}
+
+#smartskinListPageUIDesign_cacaoId li .smartskinListProductPrice{
+
+color: #E82295;
+font-weight: normal;
+position: absolute;
+right: 11px;
+margin-top: 40px;
+}
+
+#smartskinListPageUIDesign_cacaoId li .smartskinListThumbnail {
+width: 96%;
+height: 350px;
+position: relative;
+margin: 8px 0 0 0;
+box-shadow: none;
+-webkit-box-shadow: none;
+border:1px solid #ddd;
+display: inline-block;
+}
+
+#smartskinListPageUIDesign_cacaoId li >div:last-child {
+height: 60px;
+border: none;
+background: #fff;
+border-bottom: none;
+box-shadow: none;
+-webkit-box-shadow: none;
+}
+</style>
