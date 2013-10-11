@@ -66,6 +66,11 @@ $(document).ready(function(){
 				var total=$(this).parent().find("#smartSkinmainDisplayMorePrd").length;
 				console.log(total);
 				if(total){
+					$(this).parent().find("#smartSkinmainDisplayMorePrd").eq(0).find(".thumbnail").each(function(){
+						var data_src=$(this).find("img").attr("data-src");
+						$(this).find("img").attr("data-src","");
+						$(this).find("img").attr("src",data_src);
+					});
 					$(this).parent().find("#smartSkinmainDisplayMorePrd").eq(0).show();
 					$(this).parent().find("#smartSkinmainDisplayMorePrd").eq(0).attr("id","morePrd");
 				}
@@ -124,10 +129,12 @@ function smartskinMainDisplayLazyLoading_more(id,limit,more){
 		html+="</div>";
 
 		$("#smartSkinmainDisplayPrd"+id).html(html);
-		$("#smartSkinmainDisplayPrd"+id).find(".thumbnail").each(function(){
-			var data_src=$(this).find("img").attr("data-src");
-			$(this).find("img").attr("data-src","");
-			$(this).find("img").attr("src",data_src);
+		$("#smartSkinmainDisplayPrd"+id).find(".thumbnail").each(function(i){
+			if(i<limit){
+				var data_src=$(this).find("img").attr("data-src");
+				$(this).find("img").attr("data-src","");
+				$(this).find("img").attr("src",data_src);
+			}
 		});
 		$("#smartSkinmainDisplayPrd"+id+" .grid3").show();
 		$("#smartSkinmainDisplayPrd"+id).css("background-image","none");
