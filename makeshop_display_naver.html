@@ -95,6 +95,81 @@ display:none;
 }
 </style>
 
+/* ====================================================
+네이버 스타일 시작
+==================================================== */
+
+.nav_tab {
+	/*padding: 0 8px;*/
+	padding:0 0 0 0px; 
+	border-top: 1px solid #dedede;
+	border-bottom: 1px solid #dedede;
+	overflow:hidden;
+	background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAALElEQVQIW2NcvHixJAMU/Pv3z5gRJgDiMDExnQULwDgghYwLFy70AcnAtAEAA8sUOovPgKcAAAAASUVORK5CYII=');
+	font-size: 12px;
+	line-height: 30px;
+	height:30px;
+	text-align: center;
+	white-space: nowrap;
+	-webkit-box-shadow: inset 0 1px 1px #eeeff2;
+}
+
+#naverStyleMain_tap li{
+	float:left;
+	width:50%;
+}
+
+.naverTap_over{
+	background:#fff;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	border-left: 1px solid #dedede;
+	border-right: 1px solid #dedede;
+	border-top: 1px solid #fff;
+	font-weight:bold;
+	
+}
+
+
+.naverTap_over{
+	
+}
+
+#naverStyleList{
+	padding-top:20px;
+}
+
+
+#naverStyleMainPrd {
+	/*background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAALElEQVQIW2NcvHixJAMU/Pv3z5gRJgDiMDExnQULwDgghYwLFy70AcnAtAEAA8sUOovPgKcAAAAASUVORK5CYII=');*/
+	padding:15px 0 15px;
+}
+
+
+#naverStyleMainPrd  .mPrdList{
+display:inline-block;
+text-align: justify;
+word-break:break-all;
+}
+#naverStyleMainPrd  .grid{
+width:32%;
+display:inline-block;
+font-size:12px;
+vertical-align:top;
+}
+#naverStyleMainPrd  .grid img{
+width:100%;
+} 
+
+#naverStyleMainPrd .grid .price-strike{
+margin:0px;
+text-decoration: line-through;
+line-height:10px;
+}
+/* ====================================================
+네이버 스타일 끝
+==================================================== */
+
 $(document).ready(function(){
 	if($("#naverStyleList").length){
 		$('#naverStyleMainPrd').carousel();
@@ -106,7 +181,7 @@ $(document).ready(function(){
 		$("#naverStyle-MainPrd-inner").find("div").each(function(){
 			$(this).find("ul").each(function(index){
 				if(index>5)
-					$(this).hide();
+					$(this).remove();
 			});
 		});
 		

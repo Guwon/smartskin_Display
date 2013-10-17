@@ -216,8 +216,6 @@ padding: 10px 5px 0px 5px;
 border/product/list.html
 	<li>
 		<p class="descriptions">
-
-			
             <a href="/board/product/read.html{$param_read}">
 				<div class="smartskinProductBoardList1">
 				{$product_img}
@@ -228,10 +226,7 @@ border/product/list.html
     			<strong class="date {$date_display|display}" title="작성일">{$write_date}</strong>
     			<span class="summary">{$icon_re}{$icon_lock} <font color="#e30c6c">{$product_name}</font>&nbsp;{$subject|cut:22,...} {$icon_new}{$icon_hit}{$icon_file}{$comment_count}</span>
 				</div>
-				
-				
             </a>
-
 		</p>
 	</li>
 
@@ -622,3 +617,35 @@ height: 50px;
 line-height: 50px;
 padding: 3px 0;
 }
+
+/** cafe 24 이미지 **/
+
+{$big_img}
+
+확대 이미지
+
+
+
+{$medium_img}
+
+대 이미지
+
+
+
+{$small_img}
+
+중 이미지
+
+
+
+{$tiny_img}
+
+소 이미지
+
+
+/** 카페 24 리스트 이미지 노출 **/
+<style>
+.category_top_img { position:relative; width:100%; margin-top:4px; }
+.category_top_img img { width:100%; }
+</style>
+<p module="product_headcategory" class="category_top_img"><img src="{$top_image}" alt="" usemap="#categoryhead_top_image_map_name" />{$top_image_map}</p>
