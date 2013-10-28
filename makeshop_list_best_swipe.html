@@ -1,0 +1,56 @@
+
+
+
+
+<!--/if_block_best_product/-->
+                <div class="MK_product_list">
+                    <h3>베스트 상품</h3>
+                    <div class="items">
+                        <!--/block_best_product/-->
+                            <!--/loop_best_product/-->
+                        <li><a href="<!--/best_product@link/-->" class=""><img src="<!--/best_product@mobile_image/-->" alt="" /></a></li>
+                            <!--/end_loop/-->
+                        <!--/end_block/-->
+                        <div class="paging-num">
+                                <strong><!--/block_current_best_product_page_cnt/--><!--/end_block/--></strong> / 
+                                <!--/block_total_best_product_page_cnt/--><!--/end_block/-->
+                        </div>
+                    </div>
+                    <div class="btns">
+                        <!--/if_link_best_product_prev/-->
+                            <a href="<!--/link_best_product_prev/-->" class="prev">이전</a>
+                        <!--/end_if/-->
+                        <!--/if_link_best_product_next/-->
+                            <a href="<!--/link_best_product_next/-->" class="next">다음</a>
+                        <!--/end_if/-->
+                    </div>
+                </div>
+            <!--/end_if/-->
+	    
+            <!--/if_select_category/-->
+                <div class="tool-wrap wrapper">
+                     <!--/select_category/-->
+                     <!--/select_category2/-->
+                </div>
+            <!--/end_if/-->
+
+
+
+
+
+
+
+/* =============================================================================
+   베스트 상품
+================================================================================*/
+#product-list .results .MK_product_list { position: relative; background: url(/images/common/recents_items.gif) repeat 0 0; }
+#product-list .results .MK_product_list h3 { margin: 0; padding: 5px 0; text-indent: 10px; font-size: .875em; color: #828282; }
+#product-list .results .MK_product_list .items { position: relative; width: 85%; margin: 0 auto; overflow: hidden; }
+#product-list .results .MK_product_list .items ul { width: 100%; }
+#product-list .results .MK_product_list .items ul li { float: left; width: 25%; list-style-type: none; }
+#product-list .results .MK_product_list .items ul li a { position: relative; display: block; padding: 5px; }
+#product-list .results .MK_product_list .items ul li img { width: 100%; height: auto; border: 1px solid #dddddd; }
+#product-list .results .MK_product_list .items .paging-num { padding: 5px 0; font-size: .75em; text-align: center; }
+#product-list .results .MK_product_list .btns a { display: block; width: 12px; height: 32px; position: absolute; top: 50%; margin-top: -16px; text-indent: -9999px; }
+#product-list .results .MK_product_list .btns a.prev { left: 10px; background: url(/images/common/recent_prev_btn@2x.gif) no-repeat 0 0; background-size: contain; }
+#product-list .results .MK_product_list .btns a.next { right: 10px; background: url(/images/common/recent_next_btn@2x.gif) no-repeat 0 0; background-size: contain; }
