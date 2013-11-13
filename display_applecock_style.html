@@ -1,0 +1,126 @@
+<div>
+	<div class="SMS_HYD_mosaic_banner_box cb_clear">
+		<ul>
+			<!--/if_add5_product/-->
+			<!--/loop_add5_product(9)/-->
+			<li>
+				<img src="<!--/add5_product@image_m/-->" onclick="location.href='<!--/add5_product@link/-->'">
+			</li>
+			<!--/end_loop/-->
+			<!--/end_if/-->
+		</ul>
+	</div>
+</div>
+
+
+/** css **/
+.SMS_HYD_mosaic_banner_box {
+margin:10px 0 0;
+visibility:hidden;
+}
+
+.SMS_HYD_mosaic_banner_box ul {
+overflow:hidden;
+margin:0 0 3px;
+position:relative;
+}
+
+.SMS_HYD_mosaic_banner_box ul:last-child {
+margin:none;
+}
+
+.SMS_HYD_mosaic_banner_box ul li {
+line-height:0;
+position:absolute;
+top:0px;
+}
+
+.SMS_HYD_mosaic_banner_box ul li img {
+/*height:73px;*/
+}
+
+.SMS_HYD_mosaic_banner_box ul li:nth-child(1), .SMS_HYD_mosaic_banner_box ul li:nth-child(4), .SMS_HYD_mosaic_banner_box ul li:nth-child(7) {
+padding:0 2px 0 0;
+}
+
+.SMS_HYD_mosaic_banner_box ul li:nth-child(2), .SMS_HYD_mosaic_banner_box ul li:nth-child(5), .SMS_HYD_mosaic_banner_box ul li:nth-child(8) {
+padding:0 1px;
+}
+
+.SMS_HYD_mosaic_banner_box ul li:nth-child(3), .SMS_HYD_mosaic_banner_box ul li:nth-child(6), .SMS_HYD_mosaic_banner_box ul li:nth-child(9) {
+padding:0 0 0 2px;
+}
+
+/** javascript **/
+/* 메인 이미지 진열 */
+	if($(".SMS_HYD_mosaic_banner_box").length){
+		var html='';
+		var li_total=$(".SMS_HYD_mosaic_banner_box ul>li").length;
+		$(".SMS_HYD_mosaic_banner_box ul>li").each(function(index){
+			if(!(index%3)){
+				if(index)
+					html+="</ul>";
+						
+				html+="<ul>";	
+			}
+			var li=$(this).html();
+			html+="<li>"+li+"</li>";
+				
+			if(index==li_total-1)
+				html+="</ul>";
+		});
+		$(".SMS_HYD_mosaic_banner_box").html(html);
+		setTimeout(function(){
+			smartskinMainImage("load");
+			$(".SMS_HYD_mosaic_banner_box").css("visibility","visible");
+		},1000);
+	}
+	
+	window.onorientationchange = function() {
+		var orientation = window.orientation;
+		$(".SMS_HYD_mosaic_banner_box").css("visibility","hidden");
+		$(".SMS_HYD_mosaic_banner_box ul li").css("position","absolute");
+		$(".SMS_HYD_mosaic_banner_box ul li").css("float","none");
+		setTimeout(function(){
+			smartskinMainImage("orientation");
+			$(".SMS_HYD_mosaic_banner_box").css("visibility","visible");
+		},1000);
+	}
+	
+
+function smartskinMainImage(mode){
+
+	$(".SMS_HYD_mosaic_banner_box ul").each(function(index){
+		var width_arr=new Array();
+		var height_arr=new Array();
+		$(this).find("li").each(function(key){
+			if(mode=="load"){
+				width_arr[key]=$(this).width();
+				$(this).attr("w",$(this).width());
+				height_arr[key]=$(this).height();
+				$(this).attr("h",$(this).height());
+			}else{
+				width_arr[key]=$(this).attr("w");
+				height_arr[key]=$(this).attr("h");
+			}
+		});
+
+		var total=0;
+		$.each(width_arr,function(key,value){
+			total+=Number(value);
+		});
+				
+		if(total){
+			var documentWidth=$(document).width();
+			var per=(documentWidth/total);
+								
+	 
+			var height=Math.floor(height_arr[0]*per)-1;
+			
+			var i=index+1;
+			$(".SMS_HYD_mosaic_banner_box ul:nth-child("+i+") li img").css("height",height+"px");
+			$(".SMS_HYD_mosaic_banner_box ul li").css("position","static");
+			$(".SMS_HYD_mosaic_banner_box ul li").css("float","left");
+		}
+	});
+}

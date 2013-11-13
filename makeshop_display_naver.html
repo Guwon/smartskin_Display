@@ -197,3 +197,120 @@ $(document).ready(function(){
 		},1000);
 	}
 });
+
+
+/**네이버 스타일 더보기 기능 추가 **/
+$(document).ready(function(){
+	if($("#naverStyleList_more").length){
+		
+		smartskinNaverMainDisplayLazyLoading_more();
+		
+			$(".smartSkinmainDisplayMorebtn").on("click",function(){
+				var total=$(this).parent().find("#smartSkinmainDisplayMorePrd").length;
+				
+				if(total){
+					$(this).parent().find("#smartSkinmainDisplayMorePrd").eq(0).find(".MS_prod_img_s").each(function(){
+						var data_src=$(this).attr("data-src");
+						$(this).attr("data-src","");
+						if(data_src)
+							$(this).attr("src",data_src);
+					});
+					$(this).parent().find("#smartSkinmainDisplayMorePrd").eq(0).show();
+					$(this).parent().find("#smartSkinmainDisplayMorePrd").eq(0).attr("id","morePrd");
+					
+				}
+				
+				if(total==1)
+					$(this).hide();
+			});
+		
+	}
+});
+
+function smartskinNaverMainDisplayLazyLoading_more(){
+	var mainDiv=$("#naverStyleList_more #naverStyle-MainPrd-inner");
+	if(mainDiv){
+		
+		var html='';
+		
+		
+		
+		$(mainDiv).find(".mPrdList").each(function(){
+			var type=$(this).attr("data-type");
+			var total=$(this).find("ul").length;
+			var more_index=1;
+			var limit=6;
+			var currentLimit=limit;
+			$(this).find("ul").each(function(key){
+				var ul=$(this).html();
+				var onclick=$(this).attr("onclick");
+				if(!key){
+					html+='<div class="xans-element-xans-product xans-product-listnormal mPrdList" data-type='+type+'>';
+					html+='<div class="prdList">';
+				}
+				
+				if(key==currentLimit-1){
+					html+='<ul class="grid" onclick="'+onclick+'">'+ul+"</ul>";
+					html+="</div>";
+					
+					if(key<total-1){
+						html+='<div id="smartSkinmainDisplayMorePrd" style="display:none">';
+					}
+					
+					more_index++;
+					currentLimit=limit*more_index;
+				}else if(key<currentLimit){
+					html+='<ul class="grid" onclick="'+onclick+'">'+ul+"</ul>";
+					if(key==total-1){
+						html+="</div>";
+					}
+				}
+			});
+			html+='<div class="smartSkinmainDisplayMorebtn"><span>더보기</span></div>';
+			html+="</div>";
+		});
+		
+		
+		
+
+		$("#naverStyle-MainPrd-inner").html(html);
+		$("#naverStyle-MainPrd-inner").find(".mPrdList").each(function(){
+			$(this).find(".MS_prod_img_s").each(function(i){
+				if(i<6){
+					var data_src=$(this).attr("data-src");
+					$(this).attr("data-src","");
+					$(this).attr("src",data_src);
+				}
+			});
+		});
+		
+		$("#naverStyle-MainPrd-inner").show();
+		$('#naverStyleMainPrd').carousel();
+		var len=$("#naverStyleMain_tap li").length;
+		var naver_width=Math.round((100/len)*100)/100+"%";
+		$("#naverStyleMain_tap li").css("width",naver_width);
+		
+	}
+}
+
+if(cate_no){
+			var mainTab=document.getElementById('naverStyleMain_tap');
+			var len=mainTab.children.length;
+			//alert(len);
+			for(var i=0; i<len; i++){
+				mainTab.children[i].className="";
+				if(mainTab.children[i].getAttribute('data-category')==cate_no){
+					mainTab.children[i].className="naverTap_over";
+				}
+			}
+			
+			//더보기 접기
+			$element.find(".mPrdList").each(function(){
+				$(this).find("#morePrd").each(function(){
+					$(this).attr("id","smartSkinmainDisplayMorePrd");
+					$(this).hide();
+				});
+				
+				$(this).find(".smartSkinmainDisplayMorebtn").show();
+			});
+		}
