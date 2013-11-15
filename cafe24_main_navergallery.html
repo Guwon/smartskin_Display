@@ -1,0 +1,189 @@
+<!--네이버 스타일 시작 -->
+<div id="naverStyle" >
+	<div>
+		<div id="naverStyleList" cate_no="7,12">
+			<div>
+				<ul id="naverStyleMain_tap" class="nav_tab">
+				</ul>
+			</div>
+			<div id="mainPrd" class="m-carousel m-fluid m-carousel-photos">
+				<div id="mainPrd-inner" class="m-carousel-inner" style="-webkit-transform: translate3d(0px, 0, 0);">
+				</div>
+				<div id="naverStyleMainPrd-btn" class="m-carousel-controls m-carousel-bulleted">
+				</div>
+			</div>	
+		</div> 
+	</div>
+</div>
+<!--네이버 스타일 끝 -->
+
+
+
+
+.nav_tab {
+border-top: 1px solid #dedede;
+background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAALElEQVQIW2NcvHixJAMU/Pv3z5gRJgDiMDExnQULwDgghYwLFy70AcnAtAEAA8sUOovPgKcAAAAASUVORK5CYII=');
+line-height: 30px;
+height:30px;
+text-align: center;
+-webkit-box-shadow: inset 0 1px 1px #eeeff2;
+display:block;
+}
+
+.nav_tab li{
+display:inline-block;
+border-bottom: 1px solid #dedede;
+
+}
+
+.nav_tab .naverTap{
+font-weight:400;
+}
+
+.naverTap_over{
+background:#fff;
+font-weight:700;
+}
+
+#naverStyle .m-carousel-controls{
+display:none;
+}
+
+
+#naverStyle{
+padding-top:20px;
+}
+
+#naverStyle img{
+width:100%;
+}
+
+#mainPrd {
+clear:both;
+padding-bottom:15px;
+}
+
+
+
+
+
+
+
+/* 메인 네이버 갤러리 시작 
+================================= */
+
+var mPrdList_array=[];
+var total=0;
+var count=0;
+$(document).ready(function(){
+	$("#naverStyle").css("display","block");
+	var cate_no=$('#naverStyleList').attr('cate_no');
+	var cate_no_arr=cate_no.split(",");
+	var cate_len=cate_no_arr.length;
+	total=cate_len*1;
+
+	//alert(total);
+	var j=0;
+	for(var i=0; i<cate_len;i++){
+		if(i==cate_len-1){
+			getPrdList(cate_no_arr[i],1,i);
+			//getPrdList(cate_no_arr[i],2,i+j);
+		}else{
+			getPrdList(cate_no_arr[i],1,i);
+			//j++;
+			//getPrdList(cate_no_arr[i],2,i+j);
+		}
+	}
+	
+	
+});
+
+function getPrdList(cate_no,page,index){
+
+	jQuery.ajax({
+		type:"POST",
+		url:"/product/prdList.html?cate_no="+cate_no+"&page="+page,
+		dataType:"text", 
+		async: true,
+		success : function(data) {
+			var title_text=$(data).find("#titleData").html();
+			
+			var mPrdData=$(data).filter(function(){return $(this).is('#mPrdData')});
+			mPrdData.each(function(){
+				var exist=$(this).html();
+				if(exist){
+					exist='<div class="xans-element- xans-product xans-product-listnormal mPrdList typeThumb">'+exist+'</div>';
+					//$("#naverStyleList").html(exist);
+					//alert(index+'/'+page);
+					mPrdList_array[index]={html:exist,cate:cate_no,title:title_text,page:page}; 
+					 					
+				}
+			});
+			count++;
+			//마지막 응답일때
+			if(count==total)  
+				setPrdList();
+		},
+		error : function(xhr, status, error) {
+			//console.log(status);
+			return 'error!!';          
+		} 
+	});
+}
+
+
+function setPrdList(){
+	var html='';
+	var btn='';
+	var tab='';
+	var cate_no='';
+	var li_width=0;
+	//console.log(mPrdList_array);
+	
+	$.each(mPrdList_array,function(key,val){
+		if(val){
+			html+='<div class="m-item">'+val.html+'</div>';
+			var c=key+1;
+			
+			btn+='<a href="#" data-slide="'+c+'" tab_cate_no="'+val.cate+'">'+c+'</a>';
+			
+			if(cate_no!=val.cate){
+				li_width++;
+				if(key==0)
+					tab+='<li class="naverTap_over" data-category="'+val.cate+'" onclick="carouselMove('+c+')">'+val.title+'</li>';
+				else
+					tab+='<li class="naverTap" data-category="'+val.cate+'" onclick="carouselMove('+c+')">'+val.title+'</li>';
+			}
+			cate_no=val.cate;
+		}
+	});
+	$("#mainPrd-inner").html(html);
+	//btn+='<a href="#" data-slide="next">Next</a>';
+	$("#naverStyleMainPrd-btn").html(btn);
+	$("#naverStyleMain_tap").html(tab);
+	li_width=(100/li_width)+"%";
+	$(".nav_tab li").css("width",li_width);
+	Mobify.$('#mainPrd').carousel();
+}
+
+function carouselMove(index){
+	Mobify.$('#mainPrd').carousel('move',index);
+}
+
+
+/* 메인 네이버 갤러리 끝 
+================================= */
+
+		//메인진열 상품 tab over 기능 추가
+		var cate_no='';
+		$element.parent().find("#naverStyleMainPrd-btn").each(function(){
+			cate_no=$(this).find(".m-active").attr('tab_cate_no');
+		});
+		
+		if(cate_no){
+			$element.parent().find("#naverStyleMain_tap li").each(function(index){
+				$(this).removeClass().addClass("naverTap");
+				if($(this).attr("data-category")==cate_no)
+					$(this).removeClass().addClass("naverTap_over");
+			});
+		}

@@ -293,6 +293,12 @@ function smartskinNaverMainDisplayLazyLoading_more(){
 	}
 }
 
+function naverStyleMainPrdMove(index){
+Mobify.$('#naverStyleMainPrd').carousel("move",index);
+}
+
+/** 더보기 초기화 시킬때 적용 **/
+
 if(cate_no){
 			var mainTab=document.getElementById('naverStyleMain_tap');
 			var len=mainTab.children.length;
