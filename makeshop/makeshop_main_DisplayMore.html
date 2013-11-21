@@ -1,26 +1,71 @@
-<div class="mPrdList typeThumb" module="product_listmain_1">
-    <!--
-    $count = 30
-    -->
-    <h2 class="mainDisplayTitle">BEST PRODUCT</h2>
+/*===============================================================================
+- shopType:makeshop
+- 메인 진열 lazyloading & 더보기 버튼 방식 
+- 적용방법
+  1. [id="smartSkinmainDisplayPrd1"]에서 [smartSkinmainDisplayPrd1,smartSkinmainDisplayPrd2,....] 
+     일련 번호 순서로 설정
+=================================================================================*/
 	<div id="smartSkinmainDisplayPrd1">
-		<ul class="grid3">
-			<li>
-				<div class="thumbnail"><a href="/product/detail.html{$param}"><img class="lazy" data-src="{$image_tiny}" src=""  /></a></div>
-				<p class="name"><a href="/product/detail.html{$param}">{$product_name|cut:8}</a></p>
-				<p class="price">{$price_unit_head}{$product_price}<span>{$price_unit_tail}</span></p>
-			</li>
-			<li>
-				<div class="thumbnail"><a href="/product/detail.html{$param}"><img class="lazy" data-src="{$image_tiny}" src=""  /></a></div>
-				<p class="name"><a href="/product/detail.html{$param}">{$product_name|cut:8}</a></p>
-				<p class="price">{$price_unit_head}{$product_price}<span>{$price_unit_tail}</span></p>
-			</li>
-		</ul>
+		<div  class="wrapper items-wrap">
+			<ul data-type="horizontal" data-open="on" class="items clearfix">
+				<!--/if_special_product/-->
+				<!--/loop_special_product(30)/-->
+				<li>
+					<dl>
+						<dt class="hidden">상품 이미지</dt>
+						<dd class="thumb-img">
+							<img data-src="<!--/special_product@mobile_image/-->" src="" />
+							<!--/if_special_product@is_soldout/-->
+								 <div class="sold-out"></div>
+							<!--/end_if/-->
+						</dd>
+						<dt class="hidden">상품 이름</dt>
+						<dd class="pname"><!--/notag/special_product@name/--></dd>
+						<!--/if_special_product@price_replace/-->
+						<dd class="price"><!--/special_product@price_replace/--></dd>
+						<!--/else/-->
+							<!--/if_special_product@price_discount/-->
+							<dd class="price-strike"><!--/number/special_product@price_sell/-->원</dd>
+							<!--/if_special_product@discount_apply_type(mobile)/-->
+							<dd class="price"><img src="/images/d3/m_01/icon/icon_phone_write@2x.gif" /> <!--/number/special_product@price_discount/-->원</dd>
+							<!--/else/-->
+							<dd class="price"><!--/number/special_product@price_discount/-->원</dd>
+							<!--/end_if/-->
+							<!--/else/-->
+							<!--/if_special_product@price_consumer(+1)/-->
+							<dd class="price-strike"><!--/number/special_product@price_consumer/-->원</dd>
+							<!--/end_if/-->
+							<dd class="price"><!--/number/special_product@price_sell/-->원</dd>
+							<!--/end_if/-->
+						<!--/end_if/-->
+						<dd class="smartskinProductIconSet"><!--/special_product@icons/--></dd>
+						<dt class="hidden">자세히보기</dt>
+						<dd class="link-view">
+							<a href="<!--/special_product@link/-->">상품 자세히보기</a>
+						</dd>
+						<!--/if_not_special_product@is_soldout/-->
+							  <!--/if_special_product@mobile_icons/-->
+									<dd class="icons">
+										  <!--/special_product@mobile_icons/-->
+									</dd>
+									<!--/end_if/-->
+						<!--/end_if/-->
+					</dl>
+				</li>
+				<!--/end_loop/-->
+				<!--/end_if/-->
+			</ul>
+		</div>
 	</div>
-</div>
 
-<style type="text/css">
-#smartSkinmainDisplayPrd1 .grid3,#smartSkinmainDisplayPrd2 .grid3,#smartSkinmainDisplayPrd3 .grid3{
+	
+/*=====================================================================================================
+- CSS
+=====================================================================================================*/
+
+/*메인 진열 lazyloading & 더보기 버튼 css 시작
+============================================*/
+#smartSkinmainDisplayPrd1 .wrapper, #smartSkinmainDisplayPrd2 .wrapper{
 display:none;
 }
 
@@ -48,31 +93,38 @@ font-size: 11px;
 font-weight: bold;
 vertical-align: text-bottom;
 }
-</style>
+/*메인 진열 lazyloading & 더보기 버튼 css 끝
+============================================*/
 
 
-/* 메인 상품 lazy loading & 더보기 버튼 START
-================================= */
+/*=====================================================================================================
+자바스크립트 
+=====================================================================================================*/
+
+/*메인 진열 lazyloading & 더보기 버튼 javascript 시작 
+==============================================================*/
+
+
 $(document).ready(function(){
 	if($("#smartSkinmainDisplayPrd1").length){
 		setTimeout(function(){
 			/* smartskinMainDisplayLazyLoading_more(상품 div Id명 일련번호, default 노출 상품갯수 , 더보기 버튼 적용[true,false]) */
-			smartskinMainDisplayLazyLoading_more(1,6,false);
-			smartskinMainDisplayLazyLoading_more(2,9,true);
-			smartskinMainDisplayLazyLoading_more(3,9,true);
-			smartskinMainDisplayLazyLoading_more(4,9,true);
+			smartskinMainDisplayLazyLoading_more(1,15,true);
+			smartskinMainDisplayLazyLoading_more(2,18,false);
 			
-			$(".smartSkinmainDisplayMorebtn").bind("click",function(){
+			$(".smartSkinmainDisplayMorebtn").on("click",function(){
 				var total=$(this).parent().find("#smartSkinmainDisplayMorePrd").length;
-				console.log(total);
+				
 				if(total){
-					$(this).parent().find("#smartSkinmainDisplayMorePrd").eq(0).find(".thumbnail").each(function(){
+					$(this).parent().find("#smartSkinmainDisplayMorePrd").eq(0).find(".thumb-img").each(function(){
 						var data_src=$(this).find("img").attr("data-src");
 						$(this).find("img").attr("data-src","");
 						$(this).find("img").attr("src",data_src);
 					});
 					$(this).parent().find("#smartSkinmainDisplayMorePrd").eq(0).show();
 					$(this).parent().find("#smartSkinmainDisplayMorePrd").eq(0).attr("id","morePrd");
+					$("#morePrd > ul").css("margin-top","0px");
+					$("#morePrd > ul").css("padding","0px");
 				}
 				
 				if(total==1)
@@ -92,14 +144,13 @@ function smartskinMainDisplayLazyLoading_more(id,limit,more){
 		var more_index=1;
 		var currentLimit=limit;
 		var total=$(data).find("li").length;
-		;
 		
 		$(data).find("li").each(function(key){
 			var li=$(this).html();
 			if(!key){
-				html='<div>';
-				html='<div>';
-				html+='<ul class="grid3">';
+				html='<div class="wrapper items-wrap">';
+				html+='<div>';
+				html+='<ul data-type="horizontal" data-open="on" class="items clearfix">';
 			}
 			
 			if(key==currentLimit-1){
@@ -109,7 +160,7 @@ function smartskinMainDisplayLazyLoading_more(id,limit,more){
 				
 				if(key<total-1){
 					html+='<div id="smartSkinmainDisplayMorePrd" style="display:none">';
-					html+='<ul class="grid3">';
+					html+='<ul data-type="horizontal" data-open="on" class="items clearfix">';
 				}
 				
 				more_index++;
@@ -129,17 +180,17 @@ function smartskinMainDisplayLazyLoading_more(id,limit,more){
 		html+="</div>";
 
 		$("#smartSkinmainDisplayPrd"+id).html(html);
-		$("#smartSkinmainDisplayPrd"+id).find(".thumbnail").each(function(i){
+		$("#smartSkinmainDisplayPrd"+id).find(".thumb-img").each(function(i){
 			if(i<limit){
 				var data_src=$(this).find("img").attr("data-src");
 				$(this).find("img").attr("data-src","");
 				$(this).find("img").attr("src",data_src);
 			}
 		});
-		$("#smartSkinmainDisplayPrd"+id+" .grid3").show();
+		$("#smartSkinmainDisplayPrd"+id+" .wrapper").show();
 		$("#smartSkinmainDisplayPrd"+id).css("background-image","none");
 	}
 }
 
-/* 메인 상품 lazy loading & 더보기 버튼 END
-================================= */
+/*메인 진열 lazyloading & 더보기 버튼 javascript 끝 
+==============================================================*/

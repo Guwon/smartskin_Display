@@ -1,3 +1,11 @@
+/*===============================================================================
+- shopType:cafe24
+- 메인 네이버 스타일 상품 갤러리
+- 적용방법
+  1. 메인에 노출할 상품 카테고리 코드를 [cate_no="7,12"] 와 같은 형식으로 입력
+  2. 카테고리 코드는 해당 카테고리 url 주소창 확인
+=================================================================================*/
+
 <!--네이버 스타일 시작 -->
 <div id="naverStyle" >
 	<div>
@@ -19,7 +27,12 @@
 
 
 
+/*=====================================================================================================
+- CSS
+=====================================================================================================*/
 
+/*네이버 스타일 css 시작
+==============================*/
 .nav_tab {
 border-top: 1px solid #dedede;
 background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAALElEQVQIW2NcvHixJAMU/Pv3z5gRJgDiMDExnQULwDgghYwLFy70AcnAtAEAA8sUOovPgKcAAAAASUVORK5CYII=');
@@ -63,14 +76,18 @@ clear:both;
 padding-bottom:15px;
 }
 
+/*네이버 스타일 css 끝
+==============================*/
 
 
 
+/*=====================================================================================================
+- 자바스크립트 
+=====================================================================================================*/
 
 
-
-/* 메인 네이버 갤러리 시작 
-================================= */
+/*네이버 스타일 javascript 시작
+====================================*/
 
 var mPrdList_array=[];
 var total=0;
@@ -80,20 +97,28 @@ $(document).ready(function(){
 	var cate_no=$('#naverStyleList').attr('cate_no');
 	var cate_no_arr=cate_no.split(",");
 	var cate_len=cate_no_arr.length;
-	total=cate_len*1;
+	total=cate_len;
 
-	//alert(total);
 	var j=0;
 	for(var i=0; i<cate_len;i++){
 		if(i==cate_len-1){
 			getPrdList(cate_no_arr[i],1,i);
-			//getPrdList(cate_no_arr[i],2,i+j);
 		}else{
 			getPrdList(cate_no_arr[i],1,i);
-			//j++;
-			//getPrdList(cate_no_arr[i],2,i+j);
 		}
 	}
+	
+	/* 카테고리당 12개씩 2페이지로 노출할때 사용
+	for(var i=0; i<cate_len;i++){
+		if(i==cate_len-1){
+			getPrdList(cate_no_arr[i],1,i);
+			getPrdList(cate_no_arr[i],2,i+j);
+		}else{
+			getPrdList(cate_no_arr[i],1,i);
+			j++;
+			getPrdList(cate_no_arr[i],2,i+j);
+		}
+	}*/
 	
 	
 });
@@ -113,8 +138,6 @@ function getPrdList(cate_no,page,index){
 				var exist=$(this).html();
 				if(exist){
 					exist='<div class="xans-element- xans-product xans-product-listnormal mPrdList typeThumb">'+exist+'</div>';
-					//$("#naverStyleList").html(exist);
-					//alert(index+'/'+page);
 					mPrdList_array[index]={html:exist,cate:cate_no,title:title_text,page:page}; 
 					 					
 				}
@@ -125,7 +148,6 @@ function getPrdList(cate_no,page,index){
 				setPrdList();
 		},
 		error : function(xhr, status, error) {
-			//console.log(status);
 			return 'error!!';          
 		} 
 	});
@@ -138,7 +160,6 @@ function setPrdList(){
 	var tab='';
 	var cate_no='';
 	var li_width=0;
-	//console.log(mPrdList_array);
 	
 	$.each(mPrdList_array,function(key,val){
 		if(val){
@@ -171,19 +192,28 @@ function carouselMove(index){
 }
 
 
-/* 메인 네이버 갤러리 끝 
-================================= */
+/*네이버 스타일 javascript 끝
+====================================*/
 
-		//메인진열 상품 tab over 기능 추가
-		var cate_no='';
-		$element.parent().find("#naverStyleMainPrd-btn").each(function(){
-			cate_no=$(this).find(".m-active").attr('tab_cate_no');
-		});
+
+
+
+
+/*======================================================================
+- Carousel javascript에서 tab 기능 추가 스크립트 
+- tab 기능 코드가 없을 경우  Carousel javascript에 추가
+- 추가시 문의바람
+======================================================================*/
+//메인진열 상품 tab over 기능 추가
+var cate_no='';
+$element.parent().find("#naverStyleMainPrd-btn").each(function(){
+	cate_no=$(this).find(".m-active").attr('tab_cate_no');
+});
 		
-		if(cate_no){
-			$element.parent().find("#naverStyleMain_tap li").each(function(index){
-				$(this).removeClass().addClass("naverTap");
-				if($(this).attr("data-category")==cate_no)
-					$(this).removeClass().addClass("naverTap_over");
-			});
-		}
+if(cate_no){
+	$element.parent().find("#naverStyleMain_tap li").each(function(index){
+	$(this).removeClass().addClass("naverTap");
+		if($(this).attr("data-category")==cate_no)
+		$(this).removeClass().addClass("naverTap_over");
+	});
+}

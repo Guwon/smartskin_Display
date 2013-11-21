@@ -1,0 +1,193 @@
+/*===============================================================================
+- shopType:cafe24
+- 상품 상세 관련 상품 노출
+=================================================================================*/
+
+    <!-- 관련상품 -->
+    <section class="relation">
+        <div module="product_relation">
+            <div class="setPrdArea show">
+                <strong class="title" onclick="{$disp_rel_relation}"><span id="setTitle">관련상품</span></strong>
+                <div class="inlay">
+                    <ul class="mSetPrd" module="product_relationlist">
+                        <li>
+                            
+                            <div class="infoBox">
+								<div class="chk">{$form.checkbox}</div>
+                                <div class="thumbnail"><a href="/product/detail.html{$param}"><img src="{$img}" style="width:75px" alt="" /></a></div>
+                                <div class="information">
+                                    <p class="name"><a href="/product/detail.html{$param}">{$name} {$soldout_icon} {$recommend_icon} {$new_icon} {$mileage_icon}</a> {$product_icons}</p>
+                                    <p class="price">{$price_unit_head}{$product_price}{$price_unit_tail}</p>
+									<p class="count">
+										<span>{$form.quantity}
+                                              <span class="{$quantity_up_class}" alt="up">+1</span>
+                                              <span class="{$quantity_down_class}" alt="down">-1</span>
+										</span>
+									</p>
+									<p class="option" module="Product_Option">
+										<span>{$rel_option_name}</span>
+										<span>{$form.rel_option}</span>
+									</p>
+									<p class="add-option" module="Product_Addoption">
+										<span>{$rel_add_option_name}</span>
+										<span>{$form.rel_add_option}</span>
+									</p>
+                                </div>
+                             </div>
+                        </li>
+                        <li>
+                            
+                            <div class="infoBox">
+								<div class="chk">{$form.checkbox}</div>
+                                <div class="thumbnail"><a href="/product/detail.html{$param}"><img src="{$img}" style="width:75px" alt="" /></a></div>
+                                <div class="information">
+                                    <p class="name"><a href="/product/detail.html{$param}">{$name} {$soldout_icon} {$recommend_icon} {$new_icon} {$mileage_icon}</a> {$product_icons}</p>
+                                    <p class="price">{$price_unit_head}{$product_price}{$price_unit_tail}</p>
+									<p class="count">
+										<span>
+											{$form.quantity}
+                                              <span class="{$quantity_up_class}" alt="up">+1</span>
+                                              <span class="{$quantity_down_class}" alt="down">-1</span>
+										</span>
+									</p>
+									<p class="option" module="Product_Option">
+										<span>{$rel_option_name}</span>
+										<span>{$form.rel_option}</span>
+									</p>
+									<p class="add-option" module="Product_Addoption">
+										<span>{$rel_add_option_name}</span>
+										<span>{$form.rel_add_option}</span>
+									</p>
+                                </div>
+                             </div>
+     
+                        </li>
+                    </ul>
+                    <div class="mButton-relation" style="text-align:center !important">
+                        <a class="tSubmit1" href="#none" onclick="{$action_basket}" alt="장바구니 담기"><span>선택상품 장바구니</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //관련상품 -->
+	
+	
+/*=====================================================================================================
+- CSS
+=====================================================================================================*/
+
+
+/*상품상세 관련상품 css 시작
+==============================*/
+.relation .setPrdArea {
+padding:5px;
+}
+
+.relation #setTitle{
+color:#666;
+font-size:14px;
+}
+
+.relation .inlay{
+padding-top:10px;
+}
+
+.relation .inlay ul li{
+padding:10px;
+border-bottom:1px solid #ddd;
+}
+
+.relation .inlay ul li:first-child{
+border-top:1px solid #ddd;
+}
+
+.relation .chk input{
+display:block !important;
+}
+
+.relation .infoBox{
+overflow:hidden;
+
+}
+
+.relation .infoBox .chk{
+float:left;
+width:7%;
+
+}
+.relation .infoBox .thumbnail{
+float:left;
+width:25%;
+}
+
+.relation .infoBox .thumbnail img{
+width:100%;
+}
+
+.relation .infoBox .information{
+float:left;
+width:68%;
+}
+
+.relation .infoBox .name a{
+font-weight:bold;
+font-size:14px;
+color:#666;
+
+}
+
+.relation .infoBox .price {
+padding:5px 0 10px 0;
+font-weight:bold;
+border-bottom:1px solid #ddd;
+}
+
+.relation .infoBox  .RelationQuantityUp,.relation .infoBox  .RelationQuantityDown{
+display: inline-block;
+border: 1px solid #ddd;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+-moz-background-clip: padding;
+-webkit-background-clip: padding-box;
+background-clip: padding-box;
+color: #666;
+font-size: 12px;
+padding: 7px 9px;
+}
+
+.relation .infoBox .count{
+padding:10px 0 0 0;
+}
+
+
+.relation .infoBox .count input{
+width:64%;
+height:22px;
+line-height: 22px;
+}
+
+
+.relation .infoBox .option{
+padding-top:10px;
+}
+
+.relation .tSubmit1 {
+display: block;
+position: relative;
+right: 0px;
+top: 0;
+width: 100%;
+height: 50px;
+border: 1px solid #ddd;
+background: #f7f9fa;
+line-height:50px;
+}
+
+.relation .mButton-relation{
+padding-top:10px;
+}
+
+/*상품상세 관련상품 css 끝
+==============================*/
+

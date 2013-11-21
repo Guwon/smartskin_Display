@@ -1,0 +1,230 @@
+/*===============================================================================
+- shopType:cafe24 2.0
+- 상품 리스트 2차 카테고리 수동 설정
+- 적용방법
+  1. pc화면에서 카테고리 코드 확인 및 적용
+=================================================================================*/
+
+/* 어드민 -> 페이지 리스트 -> 카테고리 에 적용  */
+
+<p id="smartskinListSubcate"></p>
+
+
+
+/*=====================================================================================================
+- CSS
+=====================================================================================================*/
+
+
+/*상품리스트 카테고리 css 시작
+============================================*/
+#smartskinListSubcate{
+padding:5px 0 0 0;
+}
+#smartskinListSubcate select{
+border: 1px solid #444;
+height: 30px;
+line-height: 30px;
+background-position: 100% 87%;
+color: #444;
+}
+/*상품리스트 카테고리 css 끝
+============================================*/
+
+
+
+
+/*=====================================================================================================
+- 자바스크립트 
+=====================================================================================================*/
+
+/*상품리스트 카테고리 javascript 시작 
+============================================*/
+$(document).ready(function(){	
+	if($("smartskinListSubcate")){
+		var smartskinListSubCode=location.href;
+		
+		//아우터
+		smartskinListSubCodeChk=smartskinListSubCode.search("ADAA0000");
+		if(smartskinListSubCodeChk !=-1){
+			setSmartSkinListSub("ADAA0000");
+		}
+		smartskinListSubCodeChk=smartskinListSubCode.search("ADBR0000");
+		if(smartskinListSubCodeChk !=-1){
+			setSmartSkinListSub("ADBR0000");
+		}
+		smartskinListSubCodeChk=smartskinListSubCode.search("ADBP0000");
+		if(smartskinListSubCodeChk !=-1){
+			setSmartSkinListSub("ADBP0000");
+		}
+		smartskinListSubCodeChk=smartskinListSubCode.search("ADBQ0000");
+		if(smartskinListSubCodeChk !=-1){
+			setSmartSkinListSub("ADBQ0000");
+		}
+		smartskinListSubCodeChk=smartskinListSubCode.search("ADAF0000");
+		if(smartskinListSubCodeChk !=-1){
+			setSmartSkinListSub("ADAF0000");
+		}
+		smartskinListSubCodeChk=smartskinListSubCode.search("ADAG0000");
+		if(smartskinListSubCodeChk !=-1){
+			setSmartSkinListSub("ADAG0000");
+		}
+		smartskinListSubCodeChk=smartskinListSubCode.search("ADAJ0000");
+		if(smartskinListSubCodeChk !=-1){
+			setSmartSkinListSub("ADAJ0000");
+		}
+		smartskinListSubCodeChk=smartskinListSubCode.search("ADBF0000");
+		if(smartskinListSubCodeChk !=-1){
+			setSmartSkinListSub("ADBF0000");
+		}
+		smartskinListSubCodeChk=smartskinListSubCode.search("ADBL0000");
+		if(smartskinListSubCodeChk !=-1){
+			setSmartSkinListSub("ADBL0000");
+		}
+		smartskinListSubCodeChk=smartskinListSubCode.search("ADBK0000");
+		if(smartskinListSubCodeChk !=-1){
+			setSmartSkinListSub("ADBK0000");
+		}
+	}
+});
+	
+function setSmartSkinListSub(cate){
+	var html='';
+	if(cate=="ADAA0000"){
+		html='<select onchange="searchListSubCate(this.value);">';
+		html+=' <option value="">::: 카테고리 선택 :::</option>';
+		html+=' <option value="ADAAAG00">야상</option>';  
+		html+=' <option value="ADAAAI00">코트</option>'; 
+		html+=' <option value="ADAAAJ00">패딩</option>'; 
+		html+=' <option value="ADAAAF00">점퍼</option>'; 
+		html+=' <option value="ADAAAK00">바람막이</option>'; 
+		html+=' <option value="ADAAAB00">가디건</option>'; 
+		html+=' <option value="ADAAAL00">자켓</option>'; 		
+		html+=' <option value="ADAAAA00">집업</option>'; 
+		html+=' <option value="ADAAAH00">베스트</option>'; 
+        html+='</select>'
+	}else if(cate=="ADBR0000"){
+		html='<select onchange="searchListSubCate(this.value);">';
+		html+=' <option value="">::: 카테고리 선택 :::</option>';
+		html+=' <option value="ADBRAA00">긴팔티</option>';  
+		html+=' <option value="ADBRAB00">반팔티</option>'; 
+		html+=' <option value="ADBRAC00">나시&베스트</option>'; 
+		html+=' <option value="ADBRAN00">니트</option>'; 
+		html+=' <option value="ADBRAD00">무지</option>'; 
+		html+=' <option value="ADBRAE00">스트라이프</option>'; 
+		html+=' <option value="ADBRAF00">프린팅</option>'; 		
+		html+=' <option value="ADBRAG00">카라티</option>'; 
+		html+=' <option value="ADBRAH00">라운드티</option>'; 
+		html+=' <option value="ADBRAI00">브이넥티</option>'; 
+		html+=' <option value="ADBRAJ00">후드티</option>'; 
+		html+=' <option value="ADBRAK00">플라티</option>'; 
+		html+=' <option value="ADBRAL00">맨투맨</option>'; 
+		html+=' <option value="ADBRAM00">TORD</option>'; 
+        html+='</select>'
+	}else if(cate=="ADBP0000"){
+		html='<select onchange="searchListSubCate(this.value);">';
+		html+=' <option value="">::: 카테고리 선택 :::</option>';
+		html+=' <option value="ADBPAA00">7부/9부</option>';  
+		html+=' <option value="ADBPAB00">반바지</option>'; 
+		html+=' <option value="ADBPAC00">청바지</option>'; 
+		html+=' <option value="ADBPAD00">면바지</option>'; 
+		html+=' <option value="ADBPAE00">트레이닝</option>'; 
+		html+=' <option value="ADBPAF00">일자바지</option>'; 
+		html+=' <option value="ADBPAG00">부츠컷</option>'; 		
+		html+=' <option value="ADBPAH00">스키니</option>'; 
+		html+=' <option value="ADBPAI00">배기&ETC</option>'; 
+        html+='</select>'
+	}else if(cate=="ADBQ0000"){
+		html='<select onchange="searchListSubCate(this.value);">';
+		html+=' <option value="">::: 카테고리 선택 :::</option>';
+		html+=' <option value="ADBQAA00">긴팔남방</option>';  
+		html+=' <option value="ADBQAB00">반팔남방</option>'; 
+		html+=' <option value="ADBQAC00">7부남방</option>'; 
+		html+=' <option value="ADBQAD00">무지남방</option>'; 
+		html+=' <option value="ADBQAE00">청남방</option>'; 
+		html+=' <option value="ADBQAF00">체크/패턴남방</option>'; 
+        html+='</select>'
+	}else if(cate=="ADAF0000"){
+		html='<select onchange="searchListSubCate(this.value);">';
+		html+=' <option value="">::: 카테고리 선택 :::</option>';
+		html+=' <option value="ADAFAB00">스니커즈&런닝</option>';  
+		html+=' <option value="ADAFAA00">하이탑</option>'; 
+		html+=' <option value="ADAFAC00">구두</option>'; 
+		html+=' <option value="ADAFAD00">부츠</option>'; 
+		html+=' <option value="ADAFAH00">쪼리&샌들</option>'; 
+		html+=' <option value="ADAFAE00">깔창&ETC</option>'; 
+		html+=' <option value="ADAFAI00">수제화</option>'; 
+        html+='</select>'
+	}else if(cate=="ADAG0000"){
+		html='<select onchange="searchListSubCate(this.value);">';
+		html+=' <option value="">::: 카테고리 선택 :::</option>';
+		html+=' <option value="ADAGAB00">크로스백</option>';  
+		html+=' <option value="ADAGAA00">백팩</option>'; 
+		html+=' <option value="ADAGAC00">숄더&토드백</option>'; 
+		html+=' <option value="ADAGAE00">Exclamation Mark</option>'; 
+		html+=' <option value="ADAGAF00">LIFUL</option>'; 
+		html+=' <option value="ADAGAG00">BSQT</option>';
+        html+='</select>'
+	}else if(cate=="ADAJ0000"){
+		html='<select onchange="searchListSubCate(this.value);">';
+		html+=' <option value="">::: 카테고리 선택 :::</option>';
+		html+=' <option value="ADAJAI00">모자</option>';  
+		html+=' <option value="ADAJAJ00">시계</option>'; 
+		html+=' <option value="ADAJAK00">벨트</option>'; 
+		html+=' <option value="ADAJAB00">팔찌</option>'; 
+		html+=' <option value="ADAJAC00">목걸이</option>'; 
+		html+=' <option value="ADAJAD00">지갑</option>';
+		html+=' <option value="ADAJAE00">안경&선글라스</option>';
+		html+=' <option value="ADAJAF00">머플러</option>';
+		html+=' <option value="ADAJAG00">ETC</option>';
+		html+=' <option value="ADAJAH00">타이&헹커칩</option>';
+		html+=' <option value="ADAJAL00">양말&언더웨어</option>';
+		html+=' <option value="ADAJAM00">헤어&뷰티</option>';
+        html+='</select>'
+	}else if(cate=="ADBF0000"){
+		html='<select onchange="searchListSubCate(this.value);">';
+		html+=' <option value="">::: 카테고리 선택 :::</option>';
+		html+=' <option value="ADBFAA00">정장</option>';  
+		html+=' <option value="ADBFAB00">코트</option>'; 
+		html+=' <option value="ADBFAD00">베스트</option>'; 
+		html+=' <option value="ADBFAC00">셔츠</option>'; 
+		html+=' <option value="ADBFAH00">가방</option>'; 
+		html+=' <option value="ADBFAI00">슈즈</option>';
+		html+=' <option value="ADBFAG00">시계</option>';
+		html+=' <option value="ADBFAF00">벨트</option>';
+		html+=' <option value="ADBFAE00">타이</option>';
+		html+=' <option value="ADBFAJ00">기타</option>';
+        html+='</select>'
+	}else if(cate=="ADBL0000"){
+		html='<select onchange="searchListSubCate(this.value);">';
+		html+=' <option value="">::: 카테고리 선택 :::</option>';
+		html+=' <option value="ADBLAA00">스니커즈</option>';  
+		html+=' <option value="ADBLAB00">하이탑</option>'; 
+		html+=' <option value="ADBLAC00">구두</option>'; 
+		html+=' <option value="ADBLAD00">부츠</option>'; 
+		html+=' <option value="ADBLAE00">깔창(1cm~3cm)</option>'; 
+		html+=' <option value="ADBLAF00">깔창(4cm~6cm)</option>';
+		html+=' <option value="ADBLAG00">수제화</option>';
+        html+='</select>'
+	}else if(cate=="ADBK0000"){
+		html='<select onchange="searchListSubCate(this.value);">';
+		html+=' <option value="">::: 카테고리 선택 :::</option>';
+		html+=' <option value="ADBKAA00">세트</option>';  
+		html+=' <option value="ADBKAB00">아우터</option>'; 
+		html+=' <option value="ADBKAC00">맨투맨</option>'; 
+		html+=' <option value="ADBKAD00">후드</option>'; 
+		html+=' <option value="ADBKAE00">팬츠(1cm~3cm)</option>'; 
+        html+='</select>'
+	}
+	
+	if(html){
+		$("smartskinListSubcate").innerHTML=html;
+	}
+}
+
+function searchListSubCate(value){
+	document.location.href="/Mobilef/Cate/List.php?category_no="+value;
+}
+
+/*상품리스트 카테고리 javascript 끝 
+============================================*/
