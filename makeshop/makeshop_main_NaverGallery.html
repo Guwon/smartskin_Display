@@ -194,7 +194,7 @@ $(document).ready(function(){
 		//메인 네이버스타일 상품 6개까지만 노출
 		$("#naverStyle-MainPrd-inner").find("div").each(function(){
 			$(this).find("ul").each(function(index){
-				if(index>5)
+				if(index>3)
 					$(this).remove();
 			});
 		});
@@ -211,6 +211,9 @@ $(document).ready(function(){
 		},1000);
 	}
 });
+function naverStyleMainPrdMove(index){
+Mobify.$('#naverStyleMainPrd').carousel("move",index);
+}
 
 
 /*메인 상품 네이버 갤러리 기본 javascript 끝 
@@ -320,6 +323,10 @@ Mobify.$('#naverStyleMainPrd').carousel("move",index);
 - 상품 갤러리 이동시 펼쳐진 더보기 초기화 스크립트 
 - carousel 스크립트에 적용
 ==============================================================*/
+	var cate_no='';
+		$element.parent().find("#naverStyleMainPrd-btn").each(function(){
+			cate_no=$(this).find(".m-active").attr('tab_cate_no');
+		});
 
 		if(cate_no){
 			var mainTab=document.getElementById('naverStyleMain_tap');
