@@ -1,3 +1,163 @@
+/** 상세 fixed on/off **/
+- 카페24
+
+
+#absolute_btn  .button-close{
+padding:3px 0 0 0;
+height:38px;
+}
+
+#absolute_btn  .button-open:before{
+font-family: FontAwesome;
+content: "\f0de";
+font-size:15px;
+margin-top:-5px;
+}
+#absolute_btn  .button-open span:before{
+content: "OPEN";
+font-size:12px;
+}
+
+#absolute_btn  .button-close:before{
+content: "CLOSE";
+font-size:12px;
+}
+#absolute_btn  .button-close span:before{
+
+font-family: FontAwesome;
+content: "\f0dd";
+font-size:15px;
+margin-top:-5px;
+}
+#absolute_btn  .button-close span,#absolute_btn  .button-open span{
+background:none;
+}
+
+
+
+	if($("#absolute_btn").length){
+		if(!absolute_btn_width)
+			absolute_btn_width=$("#absolute_btn").height();
+		$("#absolute_btn").css("overflow","hidden");
+		$("#absolute_btn").css("height","52px");
+		$("#absolute_btn").css("visibility","visible");
+		$("#absolute_btn .button-close").bind("click",function(){
+			absolute_btn_ONOFF();
+		});
+		
+		$("#absolute_btn .button-open").bind("click",function(){
+			absolute_btn_ONOFF();
+		});
+	}
+
+function absolute_btn_ONOFF(){
+	if($("#absolute_btn").height()==52){
+		$("#absolute_btn  .button-open").removeClass().addClass("button-close");
+		$("#absolute_btn").animate({
+			height:absolute_btn_width+"px"
+		},{duration:500 ,complete:function(){
+			$("#absolute_btn").css("overflow","visible");
+		}});
+	}else{
+		$("#absolute_btn").css("overflow","hidden");
+		$("#absolute_btn  .button-close").removeClass().addClass("button-open");
+		$("#absolute_btn").animate({
+			height:"52px"
+		},{duration:500 ,complete:function(){ 
+					
+		}});
+	}
+}
+- 메이크샵 
+
+
+
+
+
+.smartskinDescriptionBtnGroup .button-close{
+padding:0px;
+height:38px;
+line-height:3px;
+}
+
+.smartskinDescriptionBtnGroup  .button-open:before{
+font-family: FontAwesome;
+content: "\f0de";
+font-size:15px;
+margin-top:-5px;
+}
+
+.smartskinDescriptionBtnGroup  .button-open span,.smartskinDescriptionBtnGroup  .button-close span{
+position:static;
+border:none;
+background:none;
+margin:-5px 0 0 0;
+right:0px;
+border-raius:0px;
+display:block;
+}
+
+.smartskinDescriptionBtnGroup  .button-open span:before{
+content: "OPEN";
+font-size:12px;
+}
+
+.smartskinDescriptionBtnGroup  .button-close:before{
+content: "CLOSE";
+font-size:12px;
+}
+.smartskinDescriptionBtnGroup  .button-close span:before{
+
+font-family: FontAwesome;
+content: "\f0dd";
+font-size:15px;
+margin-top:-5px;
+}
+.smartskinDescriptionBtnGroup  .button-close span,#absolute_btn  .button-open span{
+background:none;
+} 
+
+
+	if($(".smartskinDescriptionBtnGroup").length){
+		if(!absolute_btn_width)
+			absolute_btn_width=$(".smartskinDescriptionBtnGroup").height();
+		$(".smartskinDescriptionBtnGroup").css("overflow","hidden");
+		$(".smartskinDescriptionBtnGroup").css("height","65px");
+		$(".smartskinDescriptionBtnGroup").css("visibility","visible");
+		$(".smartskinDescriptionBtnGroup .button-close").bind("click",function(){
+			absolute_btn_ONOFF();
+		});
+		
+		$(".smartskinDescriptionBtnGroup .button-open").bind("click",function(){
+			absolute_btn_ONOFF();
+		});
+	}
+
+
+function absolute_btn_ONOFF(){
+	if($(".smartskinDescriptionBtnGroup").height()==65){
+		$(".smartskinDescriptionBtnGroup  .button-open").removeClass().addClass("button-close");
+		$(".smartskinDescriptionBtnGroup").animate({
+			height:absolute_btn_width+"px"
+		},{duration:500 ,complete:function(){
+			$(".smartskinDescriptionBtnGroup").css("overflow","visible");
+		}});
+	}else{
+		$(".smartskinDescriptionBtnGroup").css("overflow","hidden");
+		$(".smartskinDescriptionBtnGroup  .button-close").removeClass().addClass("button-open");
+		$(".smartskinDescriptionBtnGroup").animate({
+			height:"65px"
+		},{duration:500 ,complete:function(){ 
+					
+		}});
+	}
+}
+
+
+
+
+
+
 
 
 /** 추가 **/

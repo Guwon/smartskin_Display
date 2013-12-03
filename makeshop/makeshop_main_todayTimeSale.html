@@ -1,0 +1,411 @@
+/*===============================================================================
+- shopType:makeshop
+- 메인 today Time Sale
+- 적용방법
+  1. xml 예제 형식에 맞게 데이터를 입력한 후 서버에 올린 후 스크립트 적용 
+=================================================================================*/
+
+/*=====================================================================================================
+- XML , utf-8 인코딩으로 저장
+=====================================================================================================*/
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<main>
+	<img>
+		<url>http://www.ode.co.kr/design/odeshop/banner02/003.jpg</url>
+		<link>/m/product.html?branduid=427925</link>
+		<title>오늘만특가</title>
+		<time>2013-11-28 18:37:00</time>
+	</img>
+	<img>
+		<url>http://www.ode.co.kr/design/odeshop/banner02/2.jpg</url>
+		<link>/m/product.html?branduid=427926</link>
+		<title>겨울니트 기획전</title>
+		<time>2013-11-27 14:30:00</time>
+	</img>
+	<img>
+		<url>http://www.ode.co.kr/design/odeshop/banner02/1.jpg</url>
+		<link>/m/product.html?branduid=427927</link>
+		<title>46차 댓글 이벤트</title>
+		<time>2013-11-27 22:30:00</time>
+	</img>
+</main>
+
+
+/*=====================================================================================================
+- HTML
+=====================================================================================================*/
+
+<div id="today_timeSale">	
+	<div class="timesale_tab">
+	</div>
+	<div class="timesale_con">
+	</div>
+</div>
+
+
+/*=====================================================================================================
+- CSS
+=====================================================================================================*/
+
+/* 메인 Today Time Sale css 시작 
+==================================================== */
+#today_timeSale{
+display:none;
+}
+
+#today_timeSale .timesale_tab ul{
+display:block;
+}
+
+#today_timeSale .timesale_tab li span{
+display:none;
+}
+
+#today_timeSale .timesale_tab li .close{
+display:inline-block;
+color:red;
+font-size:12px;
+font-weight:bold;
+}
+
+#today_timeSale .timesale_tab li .open{
+display:inline-block;
+font-size:12px;
+font-weight:bold;
+}
+
+#today_timeSale .timesale_tab li{
+display:inline-block;
+text-align:center;
+font-size:12px;
+background:#fff;
+padding:5px;
+}
+
+#today_timeSale .timesale_tab .active{
+background:#ddd;
+}
+
+#today_timeSale .timesale_con ul{
+display:block;
+white-space: nowrap;
+}
+
+#today_timeSale .timesale_con li{
+display:inline-block;
+width:100%;
+}
+
+#today_timeSale .timesale_con li img{
+width:100%;
+}
+
+
+#today_timeSale .timesale_btn span:first-child{
+position:absolute;
+top:50%;
+margin-top:-20px;
+left:5px;
+}
+
+#today_timeSale .timesale_btn span:last-child{
+position:absolute;
+top:50%;
+margin-top:-20px;
+right:5px;
+}
+
+#today_timeSale .timesale_btn span{
+font-size:30px;
+background:rgba(255,255,255,0.5);
+padding:5px;
+border-radius:3px;
+box-shadow:0px 0px 4px rgba(0,0,0,0.2);
+}
+
+#today_timeSale .timesale_btn span:first-child:after{
+font-family: FontAwesome;
+content: "\f104";
+font-weight: normal;
+font-style: normal;
+text-decoration: inherit;
+-webkit-font-smoothing: antialiased;
+}
+
+#today_timeSale .timesale_btn span:last-child:after{
+font-family: FontAwesome;
+content: "\f105";
+font-weight: normal;
+font-style: normal;
+text-decoration: inherit;
+-webkit-font-smoothing: antialiased;
+}
+
+/* 메인 Today Time Sale css 끝
+==================================================== */
+
+/*=====================================================================================================
+- 자바스크립트 
+=====================================================================================================*/
+
+/*메인 Today Time Sale javascript 시작 
+==============================================================*/
+
+
+
+var Smartskin = window.Smartskin = window.Smartskin || {};
+Smartskin.$ = Smartskin.$ || window.Zepto || window.jQuery;
+
+(function($) {
+	function mainTodayTimesale(obj,opt){
+		//console.log(obj);
+		var gallery=function (obj,opt){
+			this.parent=obj;
+			this.timesale_tab=obj.find('.timesale_tab');
+			this.timesale_con=obj.find('.timesale_con');
+			this.rightBtn=obj.find(".timesale_btn span:last-child");
+			this.leftBtn=obj.find(".timesale_btn span:first-child");
+			this.todaySale_width=opt['todaySale_width'];
+			this.todaySale_first=opt['todaySale_first'];
+			this.todayWidth=opt['todayWidth'];
+			this.todaySetInterval=0;
+			this.touched=false;
+			this.total=$(this.timesale_con).find("li").length;
+			this.index=0;
+			this.bind();
+			this.todaySaleMove();
+			$(this.parent).show();
+		}
+		
+		function getCursorPosition(touch){
+			var obj= touch.originalEvent.touches ? {x: touch.originalEvent.touches[0].clientX, y: touch.originalEvent.touches[0].clientY}
+			:{x: touch.clientX, y: touch.clientY};
+			return obj;
+		}
+			
+		gallery.prototype.move=function(direction){
+			var _this=this;
+			
+			if(direction=="right"){
+				if(_this.index>=_this.total-1){
+					_this.index=0;
+				}else{
+					_this.index++;
+				}
+			}else if(direction=="left"){
+				if(_this.index<1){
+					_this.index=_this.total-1;
+				}else{
+					_this.index--;
+				}
+			}
+			_this.todaySaleMove();
+		}
+		
+		
+		gallery.prototype.todaySaleMove=function(){
+			var _this=this;
+			$(_this.timesale_tab).find("li span").hide();
+			var left=_this.todayWidth*_this.index*-1;
+			$(_this.timesale_con).find('ul').css("margin-left",left+"px");
+			$(_this.timesale_tab).find('ul li').removeClass();
+			$(_this.timesale_tab).find('ul li').css("width",_this.todaySale_width+"%");
+			$(_this.timesale_tab).find('ul li').eq(_this.index).addClass("active");
+			$(_this.timesale_tab).find('ul li').eq(_this.index).css("width",_this.todaySale_first+"%");
+			clearInterval(_this.todaySetInterval);
+			_this.todaySaleTimer();
+		}
+		
+		gallery.prototype.todaySaleTimer=function(){
+			var _this=this;
+			_this.todaySetInterval=setInterval(function(){
+				var currentDate=new Date() ;
+				currentDate=currentDate.getTime();
+
+				var time=$(_this.timesale_tab).find("li").eq(_this.index).find("span").attr("time");
+				var span=$(_this.timesale_tab).find("li").eq(_this.index).find("span");
+				var year=time.substr(0,4);
+				var month=time.substr(5,2)-1;
+				var day=time.substr(8,2);
+				var hours=time.substr(11,2);
+				var minutes=time.substr(14,2);
+				var seconds=time.substr(17,2);
+				//console.log(year,month,day,hours,minutes,seconds);
+				var saleDate=new Date(year,month,day,hours,minutes,seconds);
+				saleDate=saleDate.getTime();
+				
+				if(time){
+					$(span).removeClass();
+					if(currentDate<=saleDate){
+						//console.log(currentDate,saleDate); 
+						var timer_dis=saleDate-currentDate;
+						//var dis_housrs=timer_dis/(60*60)
+						var dday_hours=Math.floor(timer_dis/(1000*60*60));
+						var dday_minutes=Math.floor(timer_dis/(1000*60));
+						var dday_minutes_text=dday_minutes-dday_hours*60;
+						var dday_seconds=Math.floor(timer_dis/1000)-dday_minutes*60;
+						//console.log(timer_dis,dday_hours,dday_minutes,dday_seconds);
+						if(String(dday_hours).length==1)
+							dday_hours="0"+dday_hours;
+						if(String(dday_minutes_text).length==1)
+							dday_minutes_text="0"+dday_minutes_text;
+						if(String(dday_seconds).length==1)
+							dday_seconds="0"+dday_seconds;
+							
+						var dday=dday_hours+":"+dday_minutes_text+":"+dday_seconds;
+						$(span).html(dday);
+						$(span).addClass("open");
+						$(span).show();
+						var link=$(_this.timesale_con).find('ul li').eq(_this.index).attr("link");
+						//console.log(link);
+						$(_this.timesale_con).find('ul li').eq(_this.index).attr("onclick",link);
+					}else{
+						$(span).addClass("close");
+						$(span).html("[종료]");
+						$(_this.timesale_con).find('ul li').eq(_this.index).attr("onclick",'alert("종료되었습니다^^");');
+						$(span).show();
+					}
+				}
+			},500);
+		}
+		
+		gallery.prototype.bind=function(){
+			var _this=this;
+			
+			$(_this.timesale_tab).find("li").bind("click",function(){
+				_this.index=$(this).attr("index");
+				_this.todaySaleMove();
+			});
+			
+			_this.timesale_con.bind("touchstart", dragStart);
+			
+			function dragStart(e){
+				clearTimeout(_this.timer);
+				_this.touched=true;
+				
+				var startXY=getCursorPosition(e);
+
+				var startX=startXY.x;
+				var startY=startXY.y
+				_this.timesale_con.bind('touchmove', function(event) {
+					if(event.originalEvent){
+						var XY=getCursorPosition(event);
+						var direction=getDirection(startX,startY,XY);						
+						if(direction){
+							_this.timesale_con.unbind('touchmove');
+							_this.move(direction);	
+						}
+					}else{
+						_this.touched=false;
+					}
+				});
+					
+				_this.timesale_con.bind('touchend', function(event) {	
+					_this.timesale_con.unbind('touchmove');	
+					_this.touched=false;
+				});
+			}
+			
+			function getDirection(sX,sY,XY){
+				if(sX-XY.x >= 3)
+					return "right";
+				else if(sX-XY.x <= -3)
+					return "left";
+				else
+					return "";
+			}
+			
+			$(this.rightBtn).bind("click",function(){
+				_this.touched=true;
+				_this.move("right");
+			});
+			
+			$(this.leftBtn).bind("click",function(){
+				_this.touched=true;
+				_this.move("left");
+			});
+			
+			
+		}
+		
+		return new gallery(obj,opt);
+	}
+
+	$.fn.mainTodayTimesale = function (opt) {
+		new mainTodayTimesale(this,opt);
+	}
+
+})(Smartskin.$);
+
+
+$(document).ready(function(){
+
+	/* 오늘만 특가 */
+	if($("#today_timeSale").length){
+		jQuery.ajax({
+			type:"GET",
+			url:"/design/uneed90/ode_timesale.xml",
+			dataType:"xml", 
+			success : function(xml) {
+				var html="";
+				var tab_html="";
+				var btn_html="";
+				var total=$(xml).find("main").find("img").length;
+				
+				$(xml).find("main").find("img").each(function(key){
+					var src=$(this).find("url").text();
+					var link=$(this).find("link").text();
+					var time=$(this).find("time").text();
+					var title=$(this).find("title").text();
+					var num=key+1;
+					
+					html+='<li link="location.href=\''+link+'\'"><img src="'+src+'"></li>';
+					
+					if(key)
+						tab_html+='<li index='+key+'>'+title+'<span class="timer" time="'+time+'"></span></li>';
+					else
+						tab_html+='<li class="active" index='+key+'>'+title+'<span class="time" time="'+time+'"></span></li>';
+				});
+
+				
+				if(html){
+					html="<ul>"+html+"</ul>";
+					tab_html="<ul>"+tab_html+"</ul>";
+					if(total>1){
+						btn_html='<div class="timesale_btn"><span></span><span></span></div>';
+					}
+				
+					var todaySale_width=100/(total+1);
+					var todaySale_first=todaySale_width*2;
+					var todayWidth=$(window).width();
+					var ul_width=todayWidth*total;
+					var li_width=100/total; 
+					
+					$('#today_timeSale .timesale_con').html(html);
+					$('#today_timeSale .timesale_tab').html(tab_html);
+					$('#today_timeSale .timesale_con ul').css("width",ul_width+"px");
+					$("#today_timeSale .timesale_con li").css("width",li_width+"%");
+					if(btn_html)
+						$("#today_timeSale").append(btn_html);
+					
+					Smartskin.$("#today_timeSale").mainTodayTimesale({
+						todaySale_width:todaySale_width,
+						todaySale_first:todaySale_first,
+						todayWidth:todayWidth
+					});
+					
+				}
+							
+			},     
+			error : function(xhr, status, error) {
+
+			}
+		});
+	}
+
+});
+
+
+/*메인 Today Time Sale javascript 끝
+==============================================================*/
