@@ -80,14 +80,15 @@ vertical-align: text-bottom;
 /*메인 진열 lazyloading & 더보기 javascript 시작 
 ======================================================*/
 $(document).ready(function(){
-	if($("#smartSkinmainDisplayPrd1").length){
-		setTimeout(function(){
-			/* smartskinMainDisplayLazyLoading_more(상품 div Id명 일련번호, default 노출 상품갯수 , 더보기 버튼 적용[true,false]) */
-			smartskinMainDisplayLazyLoading_more(1,6,false);
-			smartskinMainDisplayLazyLoading_more(2,9,true);
-			smartskinMainDisplayLazyLoading_more(3,9,true);
-			smartskinMainDisplayLazyLoading_more(4,9,true);
+	
+	setTimeout(function(){
+		/* smartskinMainDisplayLazyLoading_more(상품 div Id명 일련번호, default 노출 상품갯수 , 더보기 버튼 적용[true,false]) */
+		smartskinMainDisplayLazyLoading_more(1,6,false);
+		smartskinMainDisplayLazyLoading_more(2,9,true);
+		smartskinMainDisplayLazyLoading_more(3,9,true);
+		smartskinMainDisplayLazyLoading_more(4,9,true);
 			
+		if($(".smartSkinmainDisplayMorebtn").length){
 			$(".smartSkinmainDisplayMorebtn").bind("click",function(){
 				var total=$(this).parent().find("#smartSkinmainDisplayMorePrd").length;
 				console.log(total);
@@ -104,8 +105,9 @@ $(document).ready(function(){
 				if(total==1)
 					$(this).hide();
 			});
-		},1000);
-	}
+		}
+	},1000);
+	
 	
 });
 

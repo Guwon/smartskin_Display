@@ -160,13 +160,13 @@ height:100%;
 ==============================================================*/
 	
 $(document).ready(function(){
-	if($("#smartSkinmainDisplayPrd1").length){
-		setTimeout(function(){
-			smartskinMainDisplayLazyLoading_more(1,9,true);
-			smartskinMainDisplayLazyLoading_more(2,30,true,12);
-			smartskinMainDisplayLazyLoading_more(3,12,true);
 
-			
+	setTimeout(function(){
+		smartskinMainDisplayLazyLoading_more(1,9,true);
+		smartskinMainDisplayLazyLoading_more(2,30,true,12);
+		smartskinMainDisplayLazyLoading_more(3,12,true);
+
+		if($(".smartSkinmainDisplayMorebtn").length){
 			$(".smartSkinmainDisplayMorebtn").on("click",function(){
 				var total=$(this).parent().find("#smartSkinmainDisplayMorePrd").length;
 				if(total){
@@ -209,8 +209,9 @@ $(document).ready(function(){
 				if(total==1)
 					$(this).hide();
 			});
-		},1000);
-	}
+		}
+	},1000);
+	
 });
 	
 function smartskinMainDisplayLazyLoading_more(id,limit,more){
@@ -225,6 +226,11 @@ function smartskinMainDisplayLazyLoading_more(id,limit,more){
 		var total=$(data).find("li").length;
 		
 		$(data).find("li").each(function(key){
+			var price_strike=$(this).find(".price-strike").text();
+			var price=$(this).find(".price").text();
+			if(price_strike==price)
+				$(this).find(".price-strike").remove();
+				
 			var li=$(this).html();
 			if(!key){
 				if(cacao_id)

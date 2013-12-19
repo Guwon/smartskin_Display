@@ -620,3 +620,32 @@ padding: 3px 0;
 .category_top_img img { width:100%; }
 </style>
 <p module="product_headcategory" class="category_top_img"><img src="{$top_image}" alt="" usemap="#categoryhead_top_image_map_name" />{$top_image_map}</p>
+
+
+
+/* 카페 24 메인 진열 카테고리 상품 가져오기 */
+
+<div module="product_listnormal">
+                <!--
+                $cate_no=519
+                $count=12
+                -->
+                <ul class="productList" rel="cate_no_519">
+                    <li>
+                        <a href="/product/detail.html{$param}">
+                            <span class="mprdImg"><img src="{$image_tiny}" alt=""class="prdImgage"></span>
+                            <span class="prdName">{$product_name|cut:20}</span>
+                            <span class="price"><strong>{$price_unit_head}{$product_price}</strong><em>{$price_unit_tail}</em></span>
+                            <!--<span class="custom" style="text-decoration:line-through;">{$price_unit_head}{$product_custom}{$price_unit_tail}</span>-->
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/product/detail.html{$param}">
+                            <span class="mprdImg"><img src="{$image_tiny}" alt="" class="prdImgage"></span>
+                            <span class="prdName">{$product_name|cut:20}</span>
+                            <span class="price"><strong>{$price_unit_head}{$product_price}</strong><em>{$price_unit_tail}</em></span>
+                            <!--<span class="custom" style="text-decoration:line-through;">{$price_unit_head}{$product_custom}{$price_unit_tail}</span>-->
+                        </a>
+                    </li>
+                </ul>
+            </div>

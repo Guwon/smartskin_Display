@@ -106,12 +106,13 @@ vertical-align: text-bottom;
 
 
 $(document).ready(function(){
-	if($("#smartSkinmainDisplayPrd1").length){
-		setTimeout(function(){
-			/* smartskinMainDisplayLazyLoading_more(상품 div Id명 일련번호, default 노출 상품갯수 , 더보기 버튼 적용[true,false]) */
-			smartskinMainDisplayLazyLoading_more(1,15,true);
-			smartskinMainDisplayLazyLoading_more(2,18,false);
-			
+
+	setTimeout(function(){
+		/* smartskinMainDisplayLazyLoading_more(상품 div Id명 일련번호, default 노출 상품갯수 , 더보기 버튼 적용[true,false]) */
+		smartskinMainDisplayLazyLoading_more(1,15,true);
+		smartskinMainDisplayLazyLoading_more(2,18,false);
+		
+		if($(".smartSkinmainDisplayMorebtn").length){
 			$(".smartSkinmainDisplayMorebtn").on("click",function(){
 				var total=$(this).parent().find("#smartSkinmainDisplayMorePrd").length;
 				
@@ -130,8 +131,9 @@ $(document).ready(function(){
 				if(total==1)
 					$(this).hide();
 			});
-		},1000);
-	}
+		}
+	},1000);
+
 	
 });
 
@@ -146,6 +148,11 @@ function smartskinMainDisplayLazyLoading_more(id,limit,more){
 		var total=$(data).find("li").length;
 		
 		$(data).find("li").each(function(key){
+			var price_strike=$(this).find(".price-strike").text();
+			var price=$(this).find(".price").text();
+			if(price_strike==price)
+				$(this).find(".price-strike").remove();
+				
 			var li=$(this).html();
 			if(!key){
 				html='<div class="wrapper items-wrap">';
