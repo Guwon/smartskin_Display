@@ -108,7 +108,7 @@
 /*메인 상품 네이버 갤러리 css 시작
 ============================================*/
 
-#naverStyleList{
+#naverStyleList {
 display:none;
 padding-top:20px;
 }
@@ -119,49 +119,48 @@ border-top: 1px solid #dedede;
 border-bottom: 1px solid #dedede;
 overflow:hidden;
 background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAALElEQVQIW2NcvHixJAMU/Pv3z5gRJgDiMDExnQULwDgghYwLFy70AcnAtAEAA8sUOovPgKcAAAAASUVORK5CYII=');
-font-size: 12px;
-line-height: 30px;
-height:30px;
-text-align: center;
-white-space: nowrap;
--webkit-box-shadow: inset 0 1px 1px #eeeff2;
+font-size:12px;
+text-align:center;
+white-space:nowrap;
 }
 
-#naverStyleMain_tap{
-display:block;
+#naverStyleMain_tap {
+display:inline-table;
+width:100%;
 }
 
-#naverStyleMain_tap li{
-width:50%;
+#naverStyleMain_tap li {
 display:inline-block;
+width:50%;
+height:30px;
+line-height:30px;
 }
 
-.naverTap_over{
-background:#fff;
-border-top-left-radius: 3px;
-border-top-right-radius: 3px;
-border-left: 1px solid #dedede;
-border-right: 1px solid #dedede;
-border-top: 1px solid #fff;
+.naverTap_over {
+border-left:1px solid #dedede;
+border-right:1px solid #dedede;
 font-weight:bold;
+background:#fff;
 }
 
 #naverStyleMainPrd {
-padding:15px 0 15px;
+padding:15px 0 0;
 }
 
-#naverStyleMainPrd  .mPrdList{
-display:inline-block;
-text-align: justify;
-word-break:break-all;
+#naverStyleMainPrd .mPrdList {
+display:inline-table;
+padding:0 5px;
 }
-#naverStyleMainPrd  .grid{
-width:32%;
+
+#naverStyleMainPrd .grid {
+width:33.33%;
 display:inline-block;
 font-size:12px;
 vertical-align:top;
+padding:0 3px;
 }
-#naverStyleMainPrd  .grid img{
+
+#naverStyleMainPrd .grid img {
 width:100%;
 } 
 
@@ -169,6 +168,11 @@ width:100%;
 margin:0px;
 text-decoration: line-through;
 line-height:10px;
+}
+
+#naverStyleMainPrd .m-carousel-controls {
+position:static;
+margin:15px 0 0;
 }
 
 /*메인 상품 네이버 갤러리 css 끝
