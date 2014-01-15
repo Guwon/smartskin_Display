@@ -244,4 +244,29 @@ product/prdList.html
         </li>
     </ul>
 </div>
+/*======================================================================
+product/prdList.html
+======================================================================*/
+<div module="Product_menupackage">
+	<div id="titleData"  class="mListTitle" module="product_headcategory">
+        {$title_text}
+    </div> 
+</div>
+<div id="mPrdData" class="mPrdList typeThumb" module="product_listnormal">
+    <!--
+    $count = 6
+    -->
+    <ul class="grid3">
+        <li>
+            <div class="thumbnail"><a href="/product/detail.html{$param}"><img src="{$image_medium}" alt="" /></a></div>
+            <p class="name"><a href="/product/detail.html{$param}">{$product_name|cut:16}</a></p>
+            <p class="price">{$price_unit_head}{$product_price}<span>{$price_unit_tail}</span></p>
+        </li>
+        <li>
+            <div class="thumbnail"><a href="/product/detail.html{$param}"><img src="{$image_medium}" alt="" /></a></div>
+            <p class="name"><a href="/product/detail.html{$param}">{$product_name|cut:16}</a></p>
+            <p class="price">{$price_unit_head}{$product_price}<span>{$price_unit_tail}</span></p>
+        </li>
+    </ul>
+</div>
 
