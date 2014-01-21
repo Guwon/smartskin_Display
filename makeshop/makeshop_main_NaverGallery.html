@@ -2,100 +2,133 @@
 - shopType:makeshop
 - 메인 상품 네이버 갤러리
 - 적용방법
-  1. [data-category="025"],[data-type="025],[tab_cate_no="025"] 에 카테고리 코드 동일하게 적용
+  1. [data-category="025"],[data-type="025],[data-category="025"] 에 카테고리 코드 동일하게 적용
 =================================================================================*/
 
 
-<div id="naverStyleList" >
-	<div id="naverStyleTab" class="nav_tab">
-		<ul id="naverStyleMain_tap" class="main_tap">
-			<li class="naverTap_over" data-category="025" onclick="naverStyleMainPrdMove(1)"><span>OUTER</span></li>      
-			<li data-category="026" onclick="naverStyleMainPrdMove(2)"><span>TOP</span></li> 
-			<li data-category="027" onclick="naverStyleMainPrdMove(3)"><span>PANTS</span></li>	
-			
-		</ul> 
-	</div>
-	<div id="naverStyleMainPrd" class="m-carousel m-fluid m-carousel-photos">
-		<div id="naverStyle-MainPrd-inner" class="m-carousel-inner" style="-webkit-transform: translate3d(0px, 0, 0);">
-			<div class="xans-element-xans-product xans-product-listnormal mPrdList" data-type="025">
-			<!--/loop_category_product_025/-->
-				<ul class="grid" onclick="document.location='<!--/category_product_025@link/-->'">
-					<li class="img"><img src="" data-src="<!--/category_product_025@image_s/-->" /></li>
-					<li class="pname"><!--/notag/category_product_025@name/--></li>
-					<li class="price">
-						<!--/if_category_product_025@price_replace/-->
-							<!--/category_product_025@price_replace/-->
-                        <!--/else/-->
-							<!--/if_category_product_025@price_discount/-->
-                                <p class="price-strike"><!--/number/category_product_025@price_sell/-->원</p>
-								<!--/number/category_product_025@price_discount/-->원
-                            <!--/else/-->
-								<!--/if_category_product_025@price_consumer(+1)/-->
-									<p class="price-strike"><!--/number/category_product_025@price_consumer/-->원</p>
+	<div id="naverStyleList001" >
+		<div class="naverStyleNav_tab">
+			<ul class="main_tap">
+				<li class="naverTap_over" data-category="001" onclick=""><span>베스트 아이템</span></li>  
+				<li data-category="002" onclick=""><span>트랜디 원피스</span></li> 
+				<li data-category="003" onclick=""><span>팬츠는 역시소임</span></li>	
+				<li data-category="004" onclick=""><span>스타일리쉬 수유복</span></li>	
+			</ul> 
+		</div>
+		<div class="naverStyleNav_tab_indicator">
+			<ul class="indicator">
+
+			</ul> 
+		</div>
+		<div id="naverStyleMainPrd" class="m-carousel m-fluid m-carousel-photos">
+			<div id="naverStyle-MainPrd-inner" class="m-carousel-inner" style="-webkit-transform: translate3d(0px, 0, 0);">
+				<div class="xans-element-xans-product xans-product-listnormal mPrdList" data-type="001">
+				<!--/loop_category_product_001/-->
+					<ul class="grid" onclick="document.location='<!--/category_product_001@link/-->'">
+						<li class="img"><img src="" data-src="<!--/category_product_001@image_s/-->" /></li>
+						<li class="pname"><!--/notag/category_product_001@name/--></li>
+						<li class="price">
+							<!--/if_category_product_001@price_replace/-->
+								<!--/category_product_001@price_replace/-->
+							<!--/else/-->
+								<!--/if_category_product_001@price_discount/-->
+									<p class="price-strike"><!--/number/category_product_001@price_sell/-->원</p>
+									<!--/number/category_product_001@price_discount/-->원
+								<!--/else/-->
+									<!--/if_category_product_001@price_consumer(+1)/-->
+										<p class="price-strike"><!--/number/category_product_001@price_consumer/-->원</p>
+									<!--/end_if/-->
+									<!--/number/category_product_001@price_sell/-->원
 								<!--/end_if/-->
-								<!--/number/category_product_025@price_sell/-->원
-                            <!--/end_if/-->
-                        <!--/end_if/-->
-					</li>
-				</ul>
-			<!--/end_loop/-->
-			</div> 
-			<div class="xans-element-xans-product xans-product-listnormal mPrdList" data-type="026">
-			<!--/loop_category_product_026/-->
-				<ul class="grid" onclick="document.location='<!--/category_product_026@link/-->'">
-					<li class="img"><img src="" data-src="<!--/category_product_026@image_s/-->" /></li>
-					<li class="pname"><!--/notag/category_product_026@name/--></li>
-					<li class="price">
-						<!--/if_category_product_026@price_replace/-->
-							<!--/category_product_026@price_replace/-->
-                        <!--/else/-->
-							<!--/if_category_product_026@price_discount/-->
-                                <p class="price-strike"><!--/number/category_product_026@price_sell/-->원</p>
-								<!--/number/category_product_026@price_discount/-->원
-                            <!--/else/-->
-								<!--/if_category_product_026@price_consumer(+1)/-->
-									<p class="price-strike"><!--/number/category_product_026@price_consumer/-->원</p>
+							<!--/end_if/-->
+						</li>
+					</ul>
+				<!--/end_loop/-->
+				</div> 
+				<div class="xans-element-xans-product xans-product-listnormal mPrdList" data-type="002">
+				<!--/loop_category_product_002/-->
+					<ul class="grid" onclick="document.location='<!--/category_product_002@link/-->'">
+						<li class="img"><img src="" data-src="<!--/category_product_002@image_s/-->" /></li>
+						<li class="pname"><!--/notag/category_product_002@name/--></li>
+						<li class="price">
+							<!--/if_category_product_002@price_replace/-->
+								<!--/category_product_002@price_replace/-->
+							<!--/else/-->
+								<!--/if_category_product_002@price_discount/-->
+									<p class="price-strike"><!--/number/category_product_002@price_sell/-->원</p>
+									<!--/number/category_product_002@price_discount/-->원
+								<!--/else/-->
+									<!--/if_category_product_002@price_consumer(+1)/-->
+										<p class="price-strike"><!--/number/category_product_002@price_consumer/-->원</p>
+									<!--/end_if/-->
+									<!--/number/category_product_002@price_sell/-->원
 								<!--/end_if/-->
-								<!--/number/category_product_026@price_sell/-->원
-                            <!--/end_if/-->
-                        <!--/end_if/-->
-					</li>
-				</ul>
-			<!--/end_loop/-->
-			</div>	
-			<div class="xans-element-xans-product xans-product-listnormal mPrdList" data-type="027">
-			<!--/loop_category_product_027/-->
-				<ul class="grid" onclick="document.location='<!--/category_product_027@link/-->'">
-					<li class="img"><img src="" data-src="<!--/category_product_027@image_s/-->" /></li>
-					<li class="pname"><!--/notag/category_product_027@name/--></li>
-					<li class="price">
-						<!--/if_category_product_027@price_replace/-->
-							<!--/category_product_027@price_replace/-->
-                        <!--/else/-->
-							<!--/if_category_product_027@price_discount/-->
-                                <p class="price-strike"><!--/number/category_product_027@price_sell/-->원</p>
-								<!--/number/category_product_027@price_discount/-->원
-                            <!--/else/-->
-								<!--/if_category_product_027@price_consumer(+1)/-->
-									<p class="price-strike"><!--/number/category_product_027@price_consumer/-->원</p>
+							<!--/end_if/-->
+						</li>
+					</ul>
+				<!--/end_loop/-->
+				</div>	
+				<div class="xans-element-xans-product xans-product-listnormal mPrdList" data-type="003">
+				<!--/loop_category_product_003/-->
+					<ul class="grid" onclick="document.location='<!--/category_product_003@link/-->'">
+						<li class="img"><img src="" data-src="<!--/category_product_003@image_s/-->" /></li>
+						<li class="pname"><!--/notag/category_product_003@name/--></li>
+						<li class="price">
+							<!--/if_category_product_003@price_replace/-->
+								<!--/category_product_003@price_replace/-->
+							<!--/else/-->
+								<!--/if_category_product_003@price_discount/-->
+									<p class="price-strike"><!--/number/category_product_003@price_sell/-->원</p>
+									<!--/number/category_product_003@price_discount/-->원
+								<!--/else/-->
+									<!--/if_category_product_003@price_consumer(+1)/-->
+										<p class="price-strike"><!--/number/category_product_003@price_consumer/-->원</p>
+									<!--/end_if/-->
+									<!--/number/category_product_003@price_sell/-->원
 								<!--/end_if/-->
-								<!--/number/category_product_027@price_sell/-->원
-                            <!--/end_if/-->
-                        <!--/end_if/-->
-					</li>
-				</ul>
-			<!--/end_loop/-->
+							<!--/end_if/-->
+						</li>
+					</ul>
+				<!--/end_loop/-->
+				</div>
+				<div class="xans-element-xans-product xans-product-listnormal mPrdList" data-type="004">
+				<!--/loop_category_product_004/-->
+					<ul class="grid" onclick="document.location='<!--/category_product_004@link/-->'">
+						<li class="img"><img src="" data-src="<!--/category_product_004@image_s/-->" /></li>
+						<li class="pname"><!--/notag/category_product_004@name/--></li>
+						<li class="price">
+							<!--/if_category_product_004@price_replace/-->
+								<!--/category_product_004@price_replace/-->
+							<!--/else/-->
+								<!--/if_category_product_004@price_discount/-->
+									<p class="price-strike"><!--/number/category_product_004@price_sell/-->원</p>
+									<!--/number/category_product_004@price_discount/-->원
+								<!--/else/-->
+									<!--/if_category_product_004@price_consumer(+1)/-->
+										<p class="price-strike"><!--/number/category_product_004@price_consumer/-->원</p>
+									<!--/end_if/-->
+									<!--/number/category_product_004@price_sell/-->원
+								<!--/end_if/-->
+							<!--/end_if/-->
+						</li>
+					</ul>
+				<!--/end_loop/-->
+				</div>
 			</div>
-			
-		</div>
-		<div id="naverStyleMainPrd-btn" class="m-carousel-controls m-carousel-bulleted">
-			<a href="#" tab_cate_no="025" data-slide="1" class="m-active">1</a>
-			<a href="#" tab_cate_no="026" data-slide="2">2</a>
-			<a href="#" tab_cate_no="027" data-slide="3">3</a>
+			<div id="naverStyleMainPrd-btn" class="m-carousel-controls m-carousel-bulleted">
+			</div>
+		</div>	
 		
+		<div class="SMS_BottomModule_09"> <!-- 스마트뷰 BottomModule_09 -->
+			<div class="container_Box cb_clear container">
+				<div class="body">
+					<ul>
+						<li><span onclick="location.href='#top'">더보기</span></li>
+					</ul>
+				</div>
+			</div>
 		</div>
-	</div>	
-</div>
+	</div>
 
 
 
@@ -108,71 +141,114 @@
 /*메인 상품 네이버 갤러리 css 시작
 ============================================*/
 
-#naverStyleList {
-display:none;
-padding-top:20px;
-}
-
-.nav_tab {
-padding:0 0 0 0px; 
-border-top: 1px solid #dedede;
-border-bottom: 1px solid #dedede;
+.naverStyleNav_tab {
+padding:10px 0 0; 
 overflow:hidden;
-background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAALElEQVQIW2NcvHixJAMU/Pv3z5gRJgDiMDExnQULwDgghYwLFy70AcnAtAEAA8sUOovPgKcAAAAASUVORK5CYII=');
+background:none;
 font-size:12px;
 text-align:center;
 white-space:nowrap;
+line-height:0px;
 }
 
-#naverStyleMain_tap {
-display:inline-table;
+.naverStyleNav_tab .main_tap{
+display:inline-block;
 width:100%;
 }
 
-#naverStyleMain_tap li {
-display:inline-block;
-width:50%;
+
+.naverStyleNav_tab li {
+float:left;
+overflow:hidden;
+white-space:nowrap;
+text-overflow:ellipsis;
 height:30px;
 line-height:30px;
+letter-spacing:-1px;
+color:#785d52;
+border-bottom:1px solid #999;
+width:25%;
+}
+.naverStyleNav_tab li  span{
+display:block;
+width:100%;
 }
 
 .naverTap_over {
-border-left:1px solid #dedede;
-border-right:1px solid #dedede;
+height:30px !important;
 font-weight:bold;
+color:#6e5a4f; 
+border-left:none;
+border-right:none;
+border-bottom:3px solid #a9dabc !important;
 background:#fff;
 }
 
-#naverStyleMainPrd {
-padding:15px 0 0;
+#naverStyle-MainPrd-inner .grid .img { 
+min-height:100px;
 }
 
-#naverStyleMainPrd .mPrdList {
+#naverStyle-MainPrd-inner .grid .img img{
+display:none;
+}
+
+
+#naverStyle-MainPrd-inner {
+padding:8px 0 0;
+}
+
+#naverStyle-MainPrd-inner .mPrdList {
 display:inline-table;
 padding:0 5px;
 }
 
-#naverStyleMainPrd .grid {
+#naverStyle-MainPrd-inner .grid {
 width:33.33%;
 display:inline-block;
 font-size:12px;
 vertical-align:top;
 padding:0 3px;
+margin:0 0 15px;
+line-height: 23px;
 }
 
-#naverStyleMainPrd .grid img {
+#naverStyle-MainPrd-inner .grid img {
 width:100%;
 } 
 
-#naverStyleMainPrd .grid .price-strike{
+#naverStyle-MainPrd-inner .grid .price-strike{
 margin:0px;
 text-decoration: line-through;
 line-height:10px;
+font-size:12px;
+color:#666;
+font-weight:normal;
 }
 
-#naverStyleMainPrd .m-carousel-controls {
+#naverStyle-MainPrd-inner .m-carousel-controls {
 position:static;
-margin:15px 0 0;
+margin:8px 0 0;
+}
+
+#naverStyle-MainPrd-inner .pname {
+height:35px;
+line-height: 15px;
+overflow:hidden;
+/*text-overflow:ellipsis;*/
+font-size:13px;
+font-weight:normal;
+text-align:center;
+color:#585858;
+margin:3px 0px;
+}
+
+#naverStyle-MainPrd-inner .price {
+height:18px;
+font-weight:bold;
+color:#ee8685;
+text-align:center;
+margin:0 0 3px;
+font-size:13px;
 }
 
 /*메인 상품 네이버 갤러리 css 끝
@@ -189,34 +265,103 @@ margin:15px 0 0;
 ==============================================================*/
 
 $(document).ready(function(){
-	if($("#naverStyleList").length){
-		$('#naverStyleMainPrd').carousel();
-		var len=$("#naverStyleMain_tap li").length;
-		var naver_width=Math.round((100/len)*100)/100+"%";
-		$("#naverStyleMain_tap li").css("width",naver_width);
+	/* 네이버 갤러리 best */
+	if($("#naverStyleList001").length){
+		/*  naverStyleCategoryProduct(id값,limit,'':실제 링크 카테고리 코드번호','로 구분 ) */
+		naverStyleCategoryProduct("naverStyleList001",6,'');
+	}
+});
+	
+function naverStyleCategoryProduct(id,limit,link_cate){
+	var _this=$("#"+id);
+	if(_this.length){
+		var btn_index=0;
+		var btn_html="";
+		var html="";
+		var tab_html="";
+		var link_cateArr=link_cate.split(",");
+		var tab_total=0;
 		
-		//메인 네이버스타일 상품 6개까지만 노출
-		$("#naverStyle-MainPrd-inner").find("div").each(function(){
-			$(this).find("ul").each(function(index){
-				if(index>3)
-					$(this).remove();
+		
+		_this.find(".mPrdList").each(function(depth){
+			var cate_no=$(this).attr('data-type');
+			var total=$(this).find("ul").length;
+			var index=0;
+			var more_index=1;
+			btn_index++;
+			tab_total++;
+			var link_cateNo=link_cateArr[depth];
+
+			
+			_this.find(".naverStyleNav_tab li").eq(depth).attr("onclick",'naverStyleNav_tab("'+id+'",'+btn_index+')');
+			
+		var currentLimit=limit;
+			$(this).find("ul").each(function(key){
+				var ul=$(this).html();
+				var link=$(this).attr("onclick");
+				if(!key){
+					html+='<div class="xans-element-xans-product xans-product-listnormal mPrdList m-item" data-type="'+cate_no+'" index="0" >';
+					btn_html+='<a href="#" data-slide="'+btn_index+'"  data-category="'+cate_no+'" index="0"  linkCate="'+link_cateNo+'">'+btn_index+'</a>';
+					tab_html+='<li data-category="'+cate_no+'"><a href="javascript:naverStyleNav_tab(\''+id+'\','+btn_index+');"></a>';
+				}
+				
+				if(key==currentLimit-1){
+					html+='<ul class="grid" onclick="'+link+'" >';
+					html+=$(this).html();
+					html+="</ul>";
+					html+="</div>";
+
+					if(key<total-1){
+						index++;
+						html+='<div class="xans-element-xans-product xans-product-listnormal mPrdList m-item" data-type="'+cate_no+'" index="'+index+'">';
+						btn_index++;
+						btn_html+='<a href="#" data-slide="'+btn_index+'"  data-category="'+cate_no+'" index="'+index+'" linkCate="'+link_cateNo+'" >'+btn_index+'</a>';
+						tab_html+='<a href="javascript:naverStyleNav_tab(\''+id+'\','+btn_index+');"></a>';
+					}
+					
+					more_index++;
+					currentLimit=limit*more_index;
+				}else if(key<currentLimit){
+					html+='<ul class="grid" onclick="'+link+'" >';
+					html+=$(this).html();
+					html+="</ul>";
+					if(key==total-1){
+						html+="</div>";
+						tab_html+='</li>';
+					}
+				}
 			});
 		});
 		
-		setTimeout(function(){
-			$("#naverStyleList #naverStyle-MainPrd-inner .mPrdList").find(".grid").each(function(){
-				var src=$(this).find(".MS_prod_img_s").attr("data-src");
-				if(src){
-					$(this).find(".MS_prod_img_s").attr("src",src);
-					$(this).find(".MS_prod_img_s").attr("data-src","");
-				}
-			});
-			$("#naverStyleList").show();
-		},1000);
+		$("#"+id+" .m-carousel-inner").html(html);
+		$("#"+id+" .m-carousel-controls").html(btn_html); 
+		$("#"+id+" .naverStyleNav_tab_indicator .indicator").html(tab_html); 
+		
+		_this.find(".m-carousel-controls a").eq(0).addClass("m-active");
+		var width=Math.round((100/tab_total)*100)/100+"%";
+		_this.find(".naverStyleNav_tab li").css("width",width);
+		_this.find(".naverStyleNav_tab_indicator .indicator li").css("width",width);
+		_this.find(".naverStyleNav_tab_indicator .indicator li a").eq(0).addClass("m-active");
+		_this.find(".naverStyleNav_tab_indicator .indicator li:nth-child(1) a").css("display","inline-block");
+		_this.find(".SMS_BottomModule_09 .body ul li span").attr("onclick",'location.href="/m/product_list.html?xcode='+link_cateArr[0]+'" ');
+		
+		$("#"+id+" .m-carousel-inner .grid").find(".img").each(function(i){
+				var data_src=$(this).find("img").attr("data-src");
+				$(this).find("img").attr("data-src","");
+				$(this).find("img").attr("src",data_src);
+				$(this).find("img").css("display","block");
+				$(this).find("img").css("height","auto");
+		});
+		
+		$("#"+id).carousel({
+			auto:true,
+			duration:5000
+		});
 	}
-});
-function naverStyleMainPrdMove(index){
-Mobify.$('#naverStyleMainPrd').carousel("move",index);
+}
+
+function naverStyleNav_tab(id,index){
+Mobify.$('#'+id).carousel("move",index);
 }
 
 
@@ -325,9 +470,10 @@ Mobify.$('#naverStyleMainPrd').carousel("move",index);
 	  
 /*============================================================
 - 상품 갤러리 이동시 펼쳐진 더보기 초기화 스크립트 
-- carousel 스크립트에 적용
+- 기본에 적용되어있음 참고용
 ==============================================================*/
-		var cate_no='';
+		//적용하지 않아도 됩니다!!!!
+		/*var cate_no='';
 		$element.parent().find("#naverStyleMainPrd-btn").each(function(){
 			cate_no=$(this).find(".m-active").attr('tab_cate_no');
 		});
@@ -352,4 +498,4 @@ Mobify.$('#naverStyleMainPrd').carousel("move",index);
 				
 				$(this).find(".smartSkinmainDisplayMorebtn").show();
 			});
-		}
+		}*/
