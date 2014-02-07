@@ -267,12 +267,12 @@ font-size:13px;
 $(document).ready(function(){
 	/* 네이버 갤러리 best */
 	if($("#naverStyleList001").length){
-		/*  naverStyleCategoryProduct(id값,limit,'':실제 링크 카테고리 코드번호','로 구분 ) */
-		naverStyleCategoryProduct("naverStyleList001",6,'');
+		/*  naverStyleCategoryProduct(id값,limit,'':실제 링크 카테고리 코드번호','로 구분,한화면에 보여지는 최대 갯수 ) */
+		naverStyleCategoryProduct("naverStyleList001",6,'',6);
 	}
 });
 	
-function naverStyleCategoryProduct(id,limit,link_cate){
+function naverStyleCategoryProduct(id,limit,link_cate,totalLimit){
 	var _this=$("#"+id);
 	if(_this.length){
 		var btn_index=0;
@@ -286,6 +286,11 @@ function naverStyleCategoryProduct(id,limit,link_cate){
 		_this.find(".mPrdList").each(function(depth){
 			var cate_no=$(this).attr('data-type');
 			var total=$(this).find("ul").length;
+			if(totalLimit && total>totalLimit){
+				total=totalLimit;
+			}else{
+				totalLimit=total;
+			}
 			var index=0;
 			var more_index=1;
 			btn_index++;
@@ -297,37 +302,39 @@ function naverStyleCategoryProduct(id,limit,link_cate){
 			
 		var currentLimit=limit;
 			$(this).find("ul").each(function(key){
-				var ul=$(this).html();
-				var link=$(this).attr("onclick");
-				if(!key){
-					html+='<div class="xans-element-xans-product xans-product-listnormal mPrdList m-item" data-type="'+cate_no+'" index="0" >';
-					btn_html+='<a href="#" data-slide="'+btn_index+'"  data-category="'+cate_no+'" index="0"  linkCate="'+link_cateNo+'">'+btn_index+'</a>';
-					tab_html+='<li data-category="'+cate_no+'"><a href="javascript:naverStyleNav_tab(\''+id+'\','+btn_index+');"></a>';
-				}
-				
-				if(key==currentLimit-1){
-					html+='<ul class="grid" onclick="'+link+'" >';
-					html+=$(this).html();
-					html+="</ul>";
-					html+="</div>";
-
-					if(key<total-1){
-						index++;
-						html+='<div class="xans-element-xans-product xans-product-listnormal mPrdList m-item" data-type="'+cate_no+'" index="'+index+'">';
-						btn_index++;
-						btn_html+='<a href="#" data-slide="'+btn_index+'"  data-category="'+cate_no+'" index="'+index+'" linkCate="'+link_cateNo+'" >'+btn_index+'</a>';
-						tab_html+='<a href="javascript:naverStyleNav_tab(\''+id+'\','+btn_index+');"></a>';
+				if(if(key<totalLimit){
+					var ul=$(this).html();
+					var link=$(this).attr("onclick");
+					if(!key){
+						html+='<div class="xans-element-xans-product xans-product-listnormal mPrdList m-item" data-type="'+cate_no+'" index="0" >';
+						btn_html+='<a href="#" data-slide="'+btn_index+'"  data-category="'+cate_no+'" index="0"  linkCate="'+link_cateNo+'">'+btn_index+'</a>';
+						tab_html+='<li data-category="'+cate_no+'"><a href="javascript:naverStyleNav_tab(\''+id+'\','+btn_index+');"></a>';
 					}
 					
-					more_index++;
-					currentLimit=limit*more_index;
-				}else if(key<currentLimit){
-					html+='<ul class="grid" onclick="'+link+'" >';
-					html+=$(this).html();
-					html+="</ul>";
-					if(key==total-1){
+					if(key==currentLimit-1){
+						html+='<ul class="grid" onclick="'+link+'" >';
+						html+=$(this).html();
+						html+="</ul>";
 						html+="</div>";
-						tab_html+='</li>';
+
+						if(key<total-1){
+							index++;
+							html+='<div class="xans-element-xans-product xans-product-listnormal mPrdList m-item" data-type="'+cate_no+'" index="'+index+'">';
+							btn_index++;
+							btn_html+='<a href="#" data-slide="'+btn_index+'"  data-category="'+cate_no+'" index="'+index+'" linkCate="'+link_cateNo+'" >'+btn_index+'</a>';
+							tab_html+='<a href="javascript:naverStyleNav_tab(\''+id+'\','+btn_index+');"></a>';
+						}
+						
+						more_index++;
+						currentLimit=limit*more_index;
+					}else if(key<currentLimit){
+						html+='<ul class="grid" onclick="'+link+'" >';
+						html+=$(this).html();
+						html+="</ul>";
+						if(key==total-1){
+							html+="</div>";
+							tab_html+='</li>';
+						}
 					}
 				}
 			});
