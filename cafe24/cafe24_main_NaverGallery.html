@@ -2,27 +2,138 @@
 - shopType:cafe24
 - 메인 네이버 스타일 상품 갤러리
 - 적용방법
-  1. 메인에 노출할 상품 카테고리 코드를 [cate_no="7,12"] 와 같은 형식으로 입력
-  2. 카테고리 코드는 해당 카테고리 url 주소창 확인
+   1. [data-category="025"],[data-type="025],[data-category="025"] 에 카테고리 코드 동일하게 적용
 =================================================================================*/
 
 <!--네이버 스타일 시작 -->
-<div id="naverStyle" >
-	<div>
-		<div id="naverStyleList" cate_no="7,12">
-			<div>
-				<ul id="naverStyleMain_tap" class="nav_tab">
-				</ul>
+<div id="naverStyleList001" >
+		<div class="naverStyleNav_tab">
+			<ul class="main_tap">
+				<li class="naverTap_over" data-category="24" onclick=""><span>Outer</span></li>  
+				<li data-category="25" onclick=""><span>Top</span></li> 
+				<li data-category="26" onclick=""><span>Dress</span></li>	
+				<li data-category="27" onclick=""><span>Bottom</span></li>	
+			</ul> 
+		</div>
+		<div class="naverStyleNav_tab_indicator">
+			<ul class="indicator">
+
+			</ul> 
+		</div>
+		<div id="naverStyleMainPrd" class="m-carousel m-fluid m-carousel-photos">
+			<div id="naverStyle-MainPrd-inner" class="m-carousel-inner" >
+				<div module="product_listnormal">
+					<!--
+						$cate_no=24
+						$count=6
+					-->
+					<ul class="grid3" rel="cate_no_24">
+						<li onclick="location.href='/product/detail.html{$param}'">
+							<div class="thumbnail"><a href="/product/detail.html{$param}"><img class="lazy" data-src="{$image_tiny}" src=""  /></a></div>
+							<p class="name"><a href="/product/detail.html{$param}">{$product_name}</a></p>
+							<p class="sub_name"><a href="/product/detail.html{$param}">{$summary_desc}</a></p>
+							<p class="retailprice">{$price_unit_head}{$product_custom}{$price_unit_tail}</p>
+							<p class="price">{$price_unit_head}{$product_price}<span>{$price_unit_tail}</span></p>
+							<p class="icons">{$product_icons}</p>
+						</li>
+						<li onclick="location.href='/product/detail.html{$param}'">
+							<div class="thumbnail"><a href="/product/detail.html{$param}"><img class="lazy" data-src="{$image_tiny}" src=""  /></a></div>
+							<p class="name"><a href="/product/detail.html{$param}">{$product_name}</a></p>
+							<p class="sub_name"><a href="/product/detail.html{$param}">{$summary_desc}</a></p>
+							<p class="retailprice">{$price_unit_head}{$product_custom}{$price_unit_tail}</p>
+							<p class="price">{$price_unit_head}{$product_price}<span>{$price_unit_tail}</span></p>
+							<p class="icons">{$product_icons}</p>
+						</li>
+					</ul>
+				</div>
+				<div module="product_listnormal">
+					<!--
+						$cate_no=25
+						$count=6
+					-->
+					<ul class="grid3" rel="cate_no_25">
+						<li onclick="location.href='/product/detail.html{$param}'">
+							<div class="thumbnail"><a href="/product/detail.html{$param}"><img class="lazy" data-src="{$image_tiny}" src=""  /></a></div>
+							<p class="name"><a href="/product/detail.html{$param}">{$product_name}</a></p>
+							<p class="sub_name"><a href="/product/detail.html{$param}">{$summary_desc}</a></p>
+							<p class="retailprice">{$price_unit_head}{$product_custom}{$price_unit_tail}</p>
+							<p class="price">{$price_unit_head}{$product_price}<span>{$price_unit_tail}</span></p>
+							<p class="icons">{$product_icons}</p>
+						</li>
+						<li onclick="location.href='/product/detail.html{$param}'">
+							<div class="thumbnail"><a href="/product/detail.html{$param}"><img class="lazy" data-src="{$image_tiny}" src=""  /></a></div>
+							<p class="name"><a href="/product/detail.html{$param}">{$product_name}</a></p>
+							<p class="sub_name"><a href="/product/detail.html{$param}">{$summary_desc}</a></p>
+							<p class="retailprice">{$price_unit_head}{$product_custom}{$price_unit_tail}</p>
+							<p class="price">{$price_unit_head}{$product_price}<span>{$price_unit_tail}</span></p>
+							<p class="icons">{$product_icons}</p>
+						</li>
+					</ul>
+				</div>
+				<div module="product_listnormal">
+					<!--
+						$cate_no=26
+						$count=6
+					-->
+					<ul class="grid3" rel="cate_no_26">
+						<li onclick="location.href='/product/detail.html{$param}'">
+							<div class="thumbnail"><a href="/product/detail.html{$param}"><img class="lazy" data-src="{$image_tiny}" src=""  /></a></div>
+							<p class="name"><a href="/product/detail.html{$param}">{$product_name}</a></p>
+							<p class="sub_name"><a href="/product/detail.html{$param}">{$summary_desc}</a></p>
+							<p class="retailprice">{$price_unit_head}{$product_custom}{$price_unit_tail}</p>
+							<p class="price">{$price_unit_head}{$product_price}<span>{$price_unit_tail}</span></p>
+							<p class="icons">{$product_icons}</p>
+						</li>
+						<li onclick="location.href='/product/detail.html{$param}'">
+							<div class="thumbnail"><a href="/product/detail.html{$param}"><img class="lazy" data-src="{$image_tiny}" src=""  /></a></div>
+							<p class="name"><a href="/product/detail.html{$param}">{$product_name}</a></p>
+							<p class="sub_name"><a href="/product/detail.html{$param}">{$summary_desc}</a></p>
+							<p class="retailprice">{$price_unit_head}{$product_custom}{$price_unit_tail}</p>
+							<p class="price">{$price_unit_head}{$product_price}<span>{$price_unit_tail}</span></p>
+							<p class="icons">{$product_icons}</p>
+						</li>
+					</ul>
+				</div>
+				<div module="product_listnormal">
+					<!--
+						$cate_no=27
+						$count=6
+					-->
+					<ul class="grid3" rel="cate_no_27">
+						<li onclick="location.href='/product/detail.html{$param}'">
+							<div class="thumbnail"><a href="/product/detail.html{$param}"><img class="lazy" data-src="{$image_tiny}" src=""  /></a></div>
+							<p class="name"><a href="/product/detail.html{$param}">{$product_name}</a></p>
+							<p class="sub_name"><a href="/product/detail.html{$param}">{$summary_desc}</a></p>
+							<p class="retailprice">{$price_unit_head}{$product_custom}{$price_unit_tail}</p>
+							<p class="price">{$price_unit_head}{$product_price}<span>{$price_unit_tail}</span></p>
+							<p class="icons">{$product_icons}</p>
+						</li>
+						<li onclick="location.href='/product/detail.html{$param}'">
+							<div class="thumbnail"><a href="/product/detail.html{$param}"><img class="lazy" data-src="{$image_tiny}" src=""  /></a></div>
+							<p class="name"><a href="/product/detail.html{$param}">{$product_name}</a></p>
+							<p class="sub_name"><a href="/product/detail.html{$param}">{$summary_desc}</a></p>
+							<p class="retailprice">{$price_unit_head}{$product_custom}{$price_unit_tail}</p>
+							<p class="price">{$price_unit_head}{$product_price}<span>{$price_unit_tail}</span></p>
+							<p class="icons">{$product_icons}</p>
+						</li>
+					</ul>
+				</div>
+				
 			</div>
-			<div id="mainPrd" class="m-carousel m-fluid m-carousel-photos">
-				<div id="mainPrd-inner" class="m-carousel-inner" style="-webkit-transform: translate3d(0px, 0, 0);">
+			<div id="naverStyleMainPrd-btn" class="m-carousel-controls m-carousel-bulleted">
+			</div>
+		</div>	
+		
+		<div class="SMS_BottomModule_09"> <!-- 스마트뷰 BottomModule_09 -->
+			<div class="container_Box cb_clear container">
+				<div class="body">
+					<ul>
+						<li><span onclick="location.href='#top'">더보기</span></li>
+					</ul>
 				</div>
-				<div id="naverStyleMainPrd-btn" class="m-carousel-controls m-carousel-bulleted">
-				</div>
-			</div>	
-		</div> 
+			</div>
+		</div>
 	</div>
-</div>
 <!--네이버 스타일 끝 -->
 
 
@@ -31,54 +142,139 @@
 - CSS
 =====================================================================================================*/
 
-/*네이버 스타일 css 시작
-==============================*/
-.nav_tab {
-border-top: 1px solid #dedede;
-background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAALElEQVQIW2NcvHixJAMU/Pv3z5gRJgDiMDExnQULwDgghYwLFy70AcnAtAEAA8sUOovPgKcAAAAASUVORK5CYII=');
-line-height: 30px;
-height:30px;
-text-align: center;
--webkit-box-shadow: inset 0 1px 1px #eeeff2;
-display:block;
+
+/*메인 상품 네이버 갤러리 css 시작
+============================================*/
+
+
+.naverStyleNav_tab {
+padding:10px 0 0; 
+overflow:hidden;
+background:none;
+font-size:12px;
+text-align:center;
+white-space:nowrap;
+line-height:0px;
 }
 
-.nav_tab li{
+.naverStyleNav_tab .main_tap{
 display:inline-block;
-border-bottom: 1px solid #dedede;
-
+width:100%;
 }
 
-.nav_tab .naverTap{
-font-weight:400;
+
+.naverStyleNav_tab li {
+float:left;
+overflow:hidden;
+white-space:nowrap;
+text-overflow:ellipsis;
+height:30px;
+line-height:30px;
+letter-spacing:-1px;
+color:#785d52;
+border-bottom:1px solid #999;
+width:25%;
+}
+.naverStyleNav_tab li  span{
+display:block;
+width:100%;
 }
 
-.naverTap_over{
+.naverTap_over {
+height:30px !important;
+font-weight:bold;
+color:#6e5a4f; 
+border-left:none;
+border-right:none;
+border-bottom:3px solid #a9dabc !important;
 background:#fff;
-font-weight:700;
 }
 
-#naverStyle .m-carousel-controls{
+#naverStyle-MainPrd-inner .grid3{
+display:inline-table;
+width:100%;
+}
+
+#naverStyle-MainPrd-inner .grid3 li .img { 
+min-height:100px;
+}
+
+#naverStyle-MainPrd-inner .grid3 li .img img{
 display:none;
 }
 
 
-#naverStyle{
-padding-top:20px;
+#naverStyle-MainPrd-inner {
+padding:8px 0 0;
 }
 
-#naverStyle img{
+#naverStyle-MainPrd-inner .mPrdList {
+display:inline-table;
+padding:0 5px;
+}
+
+#naverStyle-MainPrd-inner .grid3 li{
+width:33.33%;
+display:inline-block;
+font-size:12px;
+vertical-align:top;
+padding:0 3px;
+margin:0 0 15px;
+line-height: 23px;
+}
+
+#naverStyle-MainPrd-inner .grid3 li img {
 width:100%;
+} 
+
+#naverStyle-MainPrd-inner .grid3 li .price-strike{
+margin:0px;
+text-decoration: line-through;
+line-height:10px;
+font-size:12px;
+color:#666;
+font-weight:normal;
 }
 
-#mainPrd {
-clear:both;
-padding-bottom:15px;
+#naverStyle-MainPrd-inner .m-carousel-controls {
+position:static;
+margin:8px 0 0;
 }
 
-/*네이버 스타일 css 끝
-==============================*/
+#naverStyle-MainPrd-inner .name {
+height:35px;
+line-height: 15px;
+overflow:hidden;
+font-size:12px;
+font-weight:normal;
+text-align:center;
+color:#585858;
+margin:3px 0px;
+}
 
+#naverStyle-MainPrd-inner .price {
+height:auto;
+font-weight:bold;
+color:#666;
+text-align:center;
+margin:0 0 3px;
+font-size:12px;
+}
+
+#naverStyle-MainPrd-inner  .retailprice{
+color:#777;
+font-size: 12px;
+line-height: 1.25;
+letter-spacing: -1px;
+word-wrap: break-word;
+margin: 0 4px;
+font-weight:normal;
+text-align:center;
+text-decoration: line-through;
+}
+
+/*메인 상품 네이버 갤러리 css 끝
+============================================*/
 
 
 /*=====================================================================================================
@@ -89,184 +285,122 @@ padding-bottom:15px;
 /*네이버 스타일 javascript 시작
 ====================================*/
 
-var mPrdList_array=[];
-var total=0;
-var count=0;
 $(document).ready(function(){
-	$("#naverStyle").css("display","block");
-	var cate_no=$('#naverStyleList').attr('cate_no');
-	var cate_no_arr=cate_no.split(",");
-	var cate_len=cate_no_arr.length;
-	total=cate_len;
-
-	var j=0;
-	for(var i=0; i<cate_len;i++){
-		if(i==cate_len-1){
-			getPrdList(cate_no_arr[i],1,i);
-		}else{
-			getPrdList(cate_no_arr[i],1,i);
-		}
+	/* 네이버 갤러리 best */
+	if($("#naverStyleList001").length){
+		/*  naverStyleCategoryProduct(id값,limit,'':실제 링크 카테고리 코드번호','로 구분,한화면에 보여지는 최대 갯수 ) */
+		naverStyleCategoryProduct("naverStyleList001",6,'',6);
 	}
-	
-	/* 카테고리당 12개씩 2페이지로 노출할때 사용
-	for(var i=0; i<cate_len;i++){
-		if(i==cate_len-1){
-			getPrdList(cate_no_arr[i],1,i);
-			getPrdList(cate_no_arr[i],2,i+j);
-		}else{
-			getPrdList(cate_no_arr[i],1,i);
-			j++;
-			getPrdList(cate_no_arr[i],2,i+j);
-		}
-	}*/
-	
-	
+		
 });
 
-function getPrdList(cate_no,page,index){
+function naverStyleCategoryProduct(id,limit,link_cate,totalLimit){
+	var _this=$("#"+id);
+	if(_this.length){
+		var btn_index=0;
+		var btn_html="";
+		var html="";
+		var tab_html="";
+		var link_cateArr=link_cate.split(",");
+		var tab_total=0;
+		
+		
+		_this.find(".grid3").each(function(depth){
+			var cate_no=$(this).attr('rel');
+			cate_no=cate_no.split("_");
+			cate_no=cate_no[2];
+			var total=$(this).find("li").length;
+			if(totalLimit && total>totalLimit){
+				total=totalLimit;
+			}
+			var index=0;
+			var more_index=1;
+			btn_index++;
+			tab_total++;
+			var link_cateNo=link_cateArr[depth];
 
-	jQuery.ajax({
-		type:"POST",
-		url:"/product/prdList.html?cate_no="+cate_no+"&page="+page,
-		dataType:"text", 
-		async: true,
-		success : function(data) {
-			var title_text=$(data).find("#titleData").html();
 			
-			var mPrdData=$(data).filter(function(){return $(this).is('#mPrdData')});
-			mPrdData.each(function(){
-				var exist=$(this).html();
-				if(exist){
-					exist='<div class="xans-element- xans-product xans-product-listnormal mPrdList typeThumb">'+exist+'</div>';
-					mPrdList_array[index]={html:exist,cate:cate_no,title:title_text,page:page}; 
-					 					
+			_this.find(".naverStyleNav_tab li").eq(depth).attr("onclick",'naverStyleNav_tab("'+id+'",'+btn_index+')');
+			
+			var currentLimit=limit;
+			$(this).find("li").each(function(key){
+				if(key<totalLimit){
+					var retailprice=$(this).find(".retailprice").text();
+					var price=$(this).find(".retailprice").text();
+					retailprice=retailprice.replace(/^\s*/,'');
+					retailprice=retailprice.replace(/\s*$/,'');
+					price=price.replace(/^\s*/,'');
+					price=price.replace(/\s*$/,'');
+					if(retailprice=="0" || retailprice=="0원" || retailprice=="0 원" || retailprice=="원" || (price==retailprice))
+						$(this).find(".retailprice").remove();
+				
+					var link=$(this).attr("onclick");
+					if(!key){
+						html+='<div class="xans-element- xans-product xans-product-listnormal mPrdList m-item" data-type="'+cate_no+'" index="0" >';
+						html+='<ul class="grid3">';
+						btn_html+='<a href="#" data-slide="'+btn_index+'"  data-category="'+cate_no+'" index="0"  linkCate="'+link_cateNo+'">'+btn_index+'</a>';
+						tab_html+='<li data-category="'+cate_no+'"><a href="javascript:naverStyleNav_tab(\''+id+'\','+btn_index+');"></a>';
+					}
+					
+					if(key==currentLimit-1){
+						html+='<li onclick="'+link+'" >';
+						html+=$(this).html();
+						html+="</li>";
+						html+="</ul>";
+						html+="</div>";
+
+						if(key<total-1){
+							index++;
+							html+='<div class="xans-element- xans-product xans-product-listnormal mPrdList m-item" data-type="'+cate_no+'" index="'+index+'">';
+							html+='<ul class="grid3">';
+							btn_index++;
+							btn_html+='<a href="#" data-slide="'+btn_index+'"  data-category="'+cate_no+'" index="'+index+'" linkCate="'+link_cateNo+'" >'+btn_index+'</a>';
+							tab_html+='<a href="javascript:naverStyleNav_tab(\''+id+'\','+btn_index+');"></a>';
+						}
+						
+						more_index++;
+						currentLimit=limit*more_index;
+					}else if(key<currentLimit){
+						html+='<li onclick="'+link+'" >';
+						html+=$(this).html();
+						html+="</li>";
+						if(key==total-1){
+							html+="</ul>";
+							html+="</div>";
+							tab_html+='</li>';
+						}
+					}
 				}
 			});
-			count++;
-			//마지막 응답일때
-			if(count==total)  
-				setPrdList();
-		},
-		error : function(xhr, status, error) {
-			return 'error!!';          
-		} 
-	});
-}
-
-
-function setPrdList(){
-	var html='';
-	var btn='';
-	var tab='';
-	var cate_no='';
-	var li_width=0;
-	
-	$.each(mPrdList_array,function(key,val){
-		if(val){
-			html+='<div class="m-item">'+val.html+'</div>';
-			var c=key+1;
-			
-			btn+='<a href="#" data-slide="'+c+'" tab_cate_no="'+val.cate+'">'+c+'</a>';
-			
-			if(cate_no!=val.cate){
-				li_width++;
-				if(key==0)
-					tab+='<li class="naverTap_over" data-category="'+val.cate+'" onclick="carouselMove('+c+')">'+val.title+'</li>';
-				else
-					tab+='<li class="naverTap" data-category="'+val.cate+'" onclick="carouselMove('+c+')">'+val.title+'</li>';
-			}
-			cate_no=val.cate;
-		}
-	});
-	$("#mainPrd-inner").html(html);
-	//btn+='<a href="#" data-slide="next">Next</a>';
-	$("#naverStyleMainPrd-btn").html(btn);
-	$("#naverStyleMain_tap").html(tab);
-	li_width=(100/li_width)+"%";
-	$(".nav_tab li").css("width",li_width);
-	Mobify.$('#mainPrd').carousel();
-}
-
-function carouselMove(index){
-	Mobify.$('#mainPrd').carousel('move',index);
-}
-
-
-/*네이버 스타일 javascript 끝
-====================================*/
-
-
-
-
-
-/*======================================================================
-- Carousel javascript에서 tab 기능 추가 스크립트 
-- tab 기능 코드가 없을 경우  Carousel javascript에 추가
-- 추가시 문의바람
-======================================================================*/
-//메인진열 상품 tab over 기능 추가
-var cate_no='';
-$element.parent().find("#naverStyleMainPrd-btn").each(function(){
-	cate_no=$(this).find(".m-active").attr('tab_cate_no');
-});
+		});
 		
-if(cate_no){
-	$element.parent().find("#naverStyleMain_tap li").each(function(index){
-	$(this).removeClass().addClass("naverTap");
-		if($(this).attr("data-category")==cate_no)
-		$(this).removeClass().addClass("naverTap_over");
-	});
+		$("#"+id+" .m-carousel-inner").html(html);
+		$("#"+id+" .m-carousel-controls").html(btn_html); 
+		$("#"+id+" .naverStyleNav_tab_indicator .indicator").html(tab_html); 
+		
+		_this.find(".m-carousel-controls a").eq(0).addClass("m-active");
+		var width=Math.round((100/tab_total)*100)/100+"%";
+		_this.find(".naverStyleNav_tab li").css("width",width);
+		_this.find(".naverStyleNav_tab_indicator .indicator li").css("width",width);
+		_this.find(".naverStyleNav_tab_indicator .indicator li a").eq(0).addClass("m-active");
+		_this.find(".naverStyleNav_tab_indicator .indicator li:nth-child(1) a").css("display","inline-block");
+		_this.find(".SMS_BottomModule_09 .body ul li span").attr("onclick",'location.href="/m/product_list.html?xcode='+link_cateArr[0]+'" ');
+		
+		$("#"+id+" .m-carousel-inner .grid3 li").find(".thumbnail").each(function(i){
+				var data_src=$(this).find("img").attr("data-src");
+				$(this).find("img").attr("data-src","");
+				$(this).find("img").attr("src",data_src);
+				$(this).find("img").css("display","block");
+				$(this).find("img").css("height","auto");
+		});
+		
+		$("#"+id).carousel({
+			auto:true,
+			duration:5000
+		});
+	}
 }
 
-
-/*======================================================================
-product/prdList.html
-======================================================================*/
-<div module="Product_menupackage">
-	<div id="titleData"  class="mListTitle" module="product_headcategory">
-        {$title_text}
-    </div> 
-</div>
-<div id="mPrdData" class="mPrdList typeThumb" module="product_listnormal">
-    <!--
-    $count = 6
-    -->
-    <ul class="grid3">
-        <li>
-            <div class="thumbnail"><a href="/product/detail.html{$param}"><img src="{$image_medium}" alt="" /></a></div>
-            <p class="name"><a href="/product/detail.html{$param}">{$product_name|cut:16}</a></p>
-            <p class="price">{$price_unit_head}{$product_price}<span>{$price_unit_tail}</span></p>
-        </li>
-        <li>
-            <div class="thumbnail"><a href="/product/detail.html{$param}"><img src="{$image_medium}" alt="" /></a></div>
-            <p class="name"><a href="/product/detail.html{$param}">{$product_name|cut:16}</a></p>
-            <p class="price">{$price_unit_head}{$product_price}<span>{$price_unit_tail}</span></p>
-        </li>
-    </ul>
-</div>
-/*======================================================================
-product/prdList.html
-======================================================================*/
-<div module="Product_menupackage">
-	<div id="titleData"  class="mListTitle" module="product_headcategory">
-        {$title_text}
-    </div> 
-</div>
-<div id="mPrdData" class="mPrdList typeThumb" module="product_listnormal">
-    <!--
-    $count = 6
-    -->
-    <ul class="grid3">
-        <li>
-            <div class="thumbnail"><a href="/product/detail.html{$param}"><img src="{$image_medium}" alt="" /></a></div>
-            <p class="name"><a href="/product/detail.html{$param}">{$product_name|cut:16}</a></p>
-            <p class="price">{$price_unit_head}{$product_price}<span>{$price_unit_tail}</span></p>
-        </li>
-        <li>
-            <div class="thumbnail"><a href="/product/detail.html{$param}"><img src="{$image_medium}" alt="" /></a></div>
-            <p class="name"><a href="/product/detail.html{$param}">{$product_name|cut:16}</a></p>
-            <p class="price">{$price_unit_head}{$product_price}<span>{$price_unit_tail}</span></p>
-        </li>
-    </ul>
-</div>
-
+function naverStyleNav_tab(id,index){
+Mobify.$('#'+id).carousel("move",index);
+}
