@@ -1,0 +1,56 @@
+		<!-- 관련상품 -->
+	<div module="product_relation">
+	<div class="smartskinCategoryBestList" id="detailSmartskin">
+		<div class="best_cate_title" module="product_headcategory"><b></b>관련상품</div>
+
+		<div class="smartskinBest_container">
+				<ul class="smartskinBestCon" module="product_relationlist">
+					<li onclick="location.href='/product/detail.html{$param}'">
+					
+						<p><img src="{$img}"><span class="rank"></span></p>
+						<p>{$name} {$soldout_icon} </p>
+						<p class="price"><span class="{$product_custom|display} custom">{$price_unit_head}{$product_custom}{$price_unit_tail}</span> {$price_unit_head}{$product_price}{$price_unit_tail}</p>
+						
+					</li>
+					<li onclick="location.href='/product/detail.html{$param}'">
+					
+						<p><img src="{$img}"><span class="rank"></span></p>
+						<p>{$name} {$soldout_icon} </p>
+						<p class="price"><span class="{$product_custom|display} custom">{$price_unit_head}{$product_custom}{$price_unit_tail}</span> {$price_unit_head}{$product_price}{$price_unit_tail}</p>
+						
+					</li>
+				</ul>
+			<span class="BestList_prev"></span>
+			<span class="BestList_next"></span>
+			<div class="smartskinBestPaging"><span></span></div>
+		</div>
+	</div>
+</div>
+	    
+    <!-- //관련상품 -->
+    
+    
+    
+
+#detailSmartskin ul li {
+background:none;
+}
+
+#detailSmartskin ul li p span.rank:before{
+content:"";
+}
+
+#detailSmartskin .best_cate_title{
+height: 40px;
+line-height: 40px;
+text-align: center;
+font-size: 15px;
+font-weight: bold;
+border-bottom: 1px solid #ccc;
+background: none;
+color: #999;
+}
+
+#detailSmartskin li p:nth-child(2){
+height:auto;
+}
