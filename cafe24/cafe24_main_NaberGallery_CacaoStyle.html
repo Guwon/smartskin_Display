@@ -331,7 +331,7 @@ function naverStyleCategoryProduct(id,limit,link_cate,totalLimit){
 			$(this).find("li").each(function(key){
 				if(key<totalLimit){
 					var retailprice=$(this).find(".retailprice").text();
-					var price=$(this).find(".retailprice").text();
+					var price=$(this).find(".price").text();
 					retailprice=retailprice.replace(/^\s*/,'');
 					retailprice=retailprice.replace(/\s*$/,'');
 					price=price.replace(/^\s*/,'');
