@@ -121,7 +121,7 @@ box-sizing:border-box;
 display:inline-block;
 width:33.33%;
 border:0;
-float:right;
+float:left;
 height:115px;
 padding:3px;
 box-sizing:border-box;
@@ -190,8 +190,7 @@ $(document).ready(function(){
 					
 					if(cacao){
 						$(this).parent().find("#smartSkinmainDisplayMorePrd").eq(0).find("li").each(function(index) {
-							var index = index+1;
-							if(index==4 || index==13){
+							if(index==3 || index==12){
 							  $(this).css('width','66.66%');
 							  $(this).css('height','160px');
 							}
@@ -213,6 +212,7 @@ $(document).ready(function(){
 	},1000);
 	
 });
+	
 	
 function smartskinMainDisplayLazyLoading_more(id,limit,more){
 	var mainDiv=$("#smartSkinmainDisplayPrd"+id);
@@ -277,34 +277,33 @@ function smartskinMainDisplayLazyLoading_more(id,limit,more){
 		});
 		
 		/* 카카오 스타일 , MS_prod_img_s class 확인 */
-		$("#smartSkinmainDisplayPrd"+id).find(".MS_prod_img_s").each(function(i){
+		$("#smartSkinmainDisplayPrd"+id).find(".MS_prod_img_m").each(function(i){
 			if(i<limit){
 				var data_src=$(this).attr("data-src");
 				$(this).find("img").attr("data-src","");
 				$(this).css("background","url('"+data_src+"')");
 				$(this).css("background-position","center");
-				$(this).css("background-size","120%");
+				$(this).css("background-size","150%");
 				$(this).css("background-repeat","no-repeat");
 			}
 		});
 		$("#smartSkinmainDisplayPrd"+id+" .wrapper").show();
 		$("#smartSkinmainDisplayPrd"+id).css("background-image","none");
-		
 		if(cacao_id){
-			if($("#"+cacao_id+" li")){
-				$("#"+cacao_id+" li").each(function(index) {
-					if(index<limit){
-						var index = index+1;
-						if(index==4 || index==13){
-						  $(this).css('width','66.66%');
-						  $(this).css('height','300px');
+			if($("#smartSkinmainDisplayPrd"+id+" ul")){
+				$("#smartSkinmainDisplayPrd"+id+" ul").each(function() {
+					$(this).find("li").each(function(i){
+						if(i<limit){
+							if(i==3 || i==12){
+							  $(this).css('width','66.66%');
+							  $(this).css('height','230px');
+							}
 						}
-					}
+					});
 				});
 			 }
 		 }
 	}
 }
-
 /*메인 상품 카카오스타일&lazyloading&더보기 버튼 javascript 끝 
 ==============================================================*/
