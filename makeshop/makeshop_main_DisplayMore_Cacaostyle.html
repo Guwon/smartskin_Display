@@ -278,7 +278,6 @@ function smartskinMainDisplayLazyLoading_more(id,limit,more){
 		
 		/* 카카오 스타일 , MS_prod_img_s class 확인 */
 		$("#smartSkinmainDisplayPrd"+id).find(".MS_prod_img_s").each(function(i){
-			console.log(i);
 			if(i<limit){
 				var data_src=$(this).attr("data-src");
 				$(this).find("img").attr("data-src","");
