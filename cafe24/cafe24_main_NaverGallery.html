@@ -307,8 +307,10 @@ function naverStyleCategoryProduct(id,limit,link_cate,totalLimit){
 		
 		_this.find(".grid3").each(function(depth){
 			var cate_no=$(this).attr('rel');
-			cate_no=cate_no.split("_");
-			cate_no=cate_no[2];
+			if(cate_no){
+				cate_no=cate_no.split("_");
+				cate_no=cate_no[2];
+			}
 			var total=$(this).find("li").length;
 			if(totalLimit && total>totalLimit){
 				total=totalLimit;
