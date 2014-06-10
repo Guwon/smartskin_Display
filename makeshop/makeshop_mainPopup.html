@@ -50,11 +50,25 @@ padding:30px 0;
 .main_popup_box .main_popup_body img{
 width:100%;
 }
-		
+
+#smartskinMain_popup_floating{
+display:none;
+position:fixed;
+right:3px;
+bottom:3px;
+width:60px; 
+height:50px;
+padding:5px;
+background:rgba(0,0,0,0.7);
+z-index:999;
+color:#fff;
+font-size:12px;
+}
+
+
 /*====================================================
 메인 전체 팝업 CSS 끝
 ====================================================*/
-
 
 
 /** 메인 전체 팝업 **/
@@ -81,6 +95,21 @@ width:100%;
 					$("#smartskinMain_popup").show();
 					sessionStorage.setItem("smsPopupData", "open");
 				}
+				
+				if($("#smartskinMain_popup").css("display")!="none"){
+					setTimeout(function(){
+						$("#smartskinMain_popup").hide();
+						$("#smartskinMain_popup_floating").show();
+					},3000);
+				}
+			}else{
+				if($("#smartskinMain_popup_floating").length){
+					$("#smartskinMain_popup_floating").css("display","block"); 
+				}
+			}
+		}else{
+			if($("#smartskinMain_popup_floating").length){
+				$("#smartskinMain_popup_floating").css("display","block");
 			}
 		}
 		
