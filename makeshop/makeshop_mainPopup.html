@@ -41,10 +41,24 @@ border:1px solid #000;
 background:#fff;
 }
 
+.main_popup_box .main_popup_container .main_popup_btn {
+text-align: center;
+}
+
+.main_popup_box .main_popup_container .main_popup_btn .btn_todayClose{
+display: inline-block;
+padding: 0 10px 10px;
+}
+
+.main_popup_box .main_popup_container .main_popup_btn .btn_close{
+display: inline-block;
+padding: 0 10px 10px;
+}
+
 .main_popup_box .main_popup_body {
 text-align:center;
 color:#444;
-padding:30px 0;
+padding:30px 0 10px;
 }
 
 .main_popup_box .main_popup_body img{
@@ -54,17 +68,21 @@ width:100%;
 #smartskinMain_popup_floating{
 display:none;
 position:fixed;
-right:3px;
-bottom:3px;
+right:10px;
+bottom:45px;
 width:60px; 
-height:50px;
-padding:5px;
-background:rgba(0,0,0,0.7);
-z-index:999;
-color:#fff;
+height:auto;
+padding:10px 3px 5px;
+background:#fff;
+border:1px solid #777;
+z-index:13;
+color:#333;
 font-size:12px;
+text-align: center;
+font-weight:bold;
+line-height:14px;
+box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.22);
 }
-
 
 /*====================================================
 메인 전체 팝업 CSS 끝
