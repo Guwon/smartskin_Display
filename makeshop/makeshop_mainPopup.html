@@ -135,8 +135,8 @@ text-align: center;
 
 /** 메인 전체 팝업 **/
 	if($("#smartskinMain_popup").length){
-	    var smsUrl=document.location.href;
-		smsUrl=smsUrl.split("?");
+	    var smsFullurl=document.location.href;
+		smsUrl=smsFullurl.split("?");
 		smsUrl=smsUrl[0].split("/m/");
 
 		if(!smsUrl[1] || smsUrl[1]=="main.html" || smsUrl[1] =="index.html"){
@@ -172,7 +172,7 @@ text-align: center;
 					$("#smartskinMain_popup_floating").css("display","block"); 
 				}
 			}
-		}else{
+		}else if(smsFullurl.search("product_list.html")!=-1){
 			var smsPopupCloseData=sessionStorage.getItem("smsPopupCloseData");
 			if($("#smartskinMain_popup_floating").length && smsPopupCloseData !="open"){
 				$("#smartskinMain_popup_floating").css("display","block");
