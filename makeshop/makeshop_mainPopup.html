@@ -1,21 +1,26 @@
+<!-- 상단이벤트 소스 -->
 <div id="smartskinMain_popup" class="main_popup_box">
-				
-			<div class="main_popup_container">
-				
-				<div class="main_popup_body"><img src="http://superstari.imglink.kr/event/140531_worldc.jpg" onclick="location.href=''"></div>
-				<div class="main_popup_btn">
-					<span class="btn_todayClose"><input type="checkbox" id="smartskinTodayClose" name="smartskinTodayClose" > 오늘하루 열지않기</span>
-					<span class="btn_close">닫기</span>
-				</div>
-			
+	<div class="main_popup_DisplayContainer">
+		<div class="main_popup_container">
+
+			<div class="main_popup_body"><img src="http://smartskin.co.kr/data/makeshop/standard/custom/penagero/pop01.jpg" onclick="location.href=''"></div>
+			<div class="main_popup_btn">
+				<span class="btn_todayClose"><input type="checkbox" id="smartskinTodayClose" name="smartskinTodayClose" > 오늘하루 열지않기</span>
+				<span class="btn_close">닫기</span>
 			</div>
-				
+
 		</div>
-		
-		<div id="smartskinMain_popup_floating">
-			<div>메인팝업 이벤트</div>
-		</div>
-		
+	</div>
+</div>
+
+ <!-- 하단 fixed 팝업배너 -->
+<div id="smartskinMain_popup_floating">
+	<div>
+		<img src="http://smartskin.co.kr/data/makeshop/standard/custom/penagero/footer_pupup_banner.jpg" onclick="location.href=''">
+	</div>   
+</div>
+<div class="smartskinMain_popup_floating_close">닫기</div>           
+<!-- 상단이벤트 소스 -->
 		
 		
 /*====================================================
@@ -31,6 +36,16 @@ height:100%;
 padding:10px;
 background:rgba(0,0,0,0.7);
 z-index:999;
+}
+
+.main_popup_box .main_popup_DisplayContainer{
+display: box;
+box-pack: center;
+box-align: center;
+display: -webkit-box;
+-webkit-box-pack: center;
+-webkit-box-align: center;
+height: 100%;
 }
 
 .main_popup_box .main_popup_container {
@@ -94,8 +109,9 @@ box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.22);
 	    var smsUrl=document.location.href;
 		smsUrl=smsUrl.split("?");
 		smsUrl=smsUrl[0].split("/m/");
-		
+
 		if(!smsUrl[1] || smsUrl[1]=="main.html" || smsUrl[1] =="index.html"){
+		
 			var smsPopupData=sessionStorage.getItem("smsPopupData");
 			if(smsPopupData!="open"){
 				//오늘 하루 열지 않기
@@ -113,24 +129,29 @@ box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.22);
 					$("#smartskinMain_popup").show();
 					sessionStorage.setItem("smsPopupData", "open");
 				}
-				
+
 				if($("#smartskinMain_popup").css("display")!="none"){
 					setTimeout(function(){
-						$("#smartskinMain_popup").hide();
-						$("#smartskinMain_popup_floating").show();
+						$("#smartskinMain_popup").fadeOut(700);
+						$("#smartskinMain_popup_floating").fadeIn(700);
+						$(".smartskinMain_popup_floating_close").fadeIn(700);
 					},3000);
 				}
 			}else{
-				if($("#smartskinMain_popup_floating").length){
+				var smsPopupCloseData=sessionStorage.getItem("smsPopupCloseData");
+				if($("#smartskinMain_popup_floating").length && smsPopupCloseData !="open"){
 					$("#smartskinMain_popup_floating").css("display","block"); 
+					$(".smartskinMain_popup_floating_close").css("display","block"); 
 				}
 			}
 		}else{
-			if($("#smartskinMain_popup_floating").length){
+			var smsPopupCloseData=sessionStorage.getItem("smsPopupCloseData");
+			if($("#smartskinMain_popup_floating").length && smsPopupCloseData !="open"){
 				$("#smartskinMain_popup_floating").css("display","block");
+				$(".smartskinMain_popup_floating_close").css("display","block"); 
 			}
 		}
-		
+
 
 		$("#smartskinMain_popup .btn_close").click(function(){
 			var checkBox=$("input:checkbox[id='smartskinTodayClose']").is(":checked");
@@ -139,7 +160,15 @@ box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.22);
 				var nowTime=smsDate.getTime();
 				localStorage.setItem("smsPopupStorage", nowTime);
 			}
-			$("#smartskinMain_popup").hide();
+			$("#smartskinMain_popup").fadeOut(700);
 		});
-		
+
 	}
+	
+	$(".smartskinMain_popup_floating_close").click(function(){
+			$("#smartskinMain_popup_floating").fadeOut(700);
+			$(this).fadeOut(700);
+			
+			sessionStorage.setItem("smsPopupCloseData", "open");
+			$("#SMS_Topmodule_01").animate({ 'bottom':'0px'});
+	});
