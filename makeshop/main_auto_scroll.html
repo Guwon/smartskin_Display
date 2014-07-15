@@ -1,0 +1,33 @@
+//메인 상품 자동 더보기
+	$(window).scroll(function(){
+		var topHeight=$(".fixed_top_banner").height()+$("#header_container").height()+$("#main-banner-carousel").height()+$("#SMS_Topmodule_06_2").height()+$(".mainBanner3x1").height()+$(".mainBanner2x1").height()+$("#mainmove_bestGallery").height();
+		var scrollHeight=topHeight;
+		var totalBtns=$(".smartSkinmainDisplayMorebtn").length;
+		
+		$(".smartSkinmainDisplayMorebtn").each(function(index){
+			if(index==0){
+				var contentHeight=topHeight+($(this).parent().height())/3;
+				if($(window).scrollTop()>contentHeight){
+					var total=$(this).parent().find("#smartSkinmainDisplayMorePrd").length;
+				
+					if(total){
+						$(this).parent().find("#smartSkinmainDisplayMorePrd").eq(0).find(".thumb-img").each(function(){
+							var data_src=$(this).find("img").attr("data-src");
+							$(this).find("img").attr("data-src","");
+							$(this).find("img").attr("src",data_src);
+							$(this).css("visibility","visible");
+							$(this).find("img").css("height","auto");
+						});
+						$(this).parent().find("#smartSkinmainDisplayMorePrd").eq(0).show();
+						$(this).parent().find("#smartSkinmainDisplayMorePrd").eq(0).attr("id","morePrd");
+						$("#morePrd > ul").css("margin-top","0px");
+						$("#morePrd > ul").css("padding","0px 5px");
+					}
+					
+					if(total==1)
+						$(this).remove();
+				}
+			}
+		});
+		
+	});
