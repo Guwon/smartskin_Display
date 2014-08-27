@@ -1,3 +1,20 @@
+Skip to content
+ This repository
+Explore
+Gist
+Blog
+Help
+Guwon Guwon
+ 
+You don't have any verified emails. We recommend verifying at least one email.
+Email verification helps our support team help you in case you have any email issues or lose your password.
+7  Unwatch 
+  Star 0
+ Fork 0Guwon/smartskin_Display
+ branch: master  smartskin_Display / makeshop / makeshop_main_NaverGallery_CacaosStyle.html
+GuwonGuwon 20 days ago 수정
+1 contributor
+466 lines (383 sloc)  13.504 kb RawBlameHistory   
 /*===============================================================================
 - shopType:makeshop
 - 메인 상품 네이버 갤러리 카카오스타일
@@ -26,7 +43,7 @@
 				<!--/loop_category_product_001/-->
 					<ul class="smartskinCacaoStyle" onclick="document.location='<!--/category_product_001@link/-->'">
 						<li>
-							<div data-src='<!--/category_product_001@image_l/-->'></div>
+							<div><img src='<!--/category_product_001@image_l/-->'></div>
 						</li>
 					</ul>
 				<!--/end_loop/-->
@@ -35,7 +52,7 @@
 				<!--/loop_category_product_002/-->
 					<ul class="smartskinCacaoStyle" onclick="document.location='<!--/category_product_002@link/-->'">
 						<li>
-							<div data-src='<!--/category_product_002@image_l/-->'></div>
+							<div><img src='<!--/category_product_002@image_l/-->'></div>
 						</li>
 					</ul>
 				<!--/end_loop/-->
@@ -44,7 +61,7 @@
 				<!--/loop_category_product_003/-->
 					<ul class="smartskinCacaoStyle" onclick="document.location='<!--/category_product_003@link/-->'">
 						<li>
-							<div data-src='<!--/category_product_003@image_l/-->'></div>
+							<div><img src='<!--/category_product_003@image_l/-->'></div>
 						</li>
 					</ul>
 				<!--/end_loop/-->
@@ -53,7 +70,7 @@
 				<!--/loop_category_product_004/-->
 					<ul class="smartskinCacaoStyle" onclick="document.location='<!--/category_product_004@link/-->'">
 						<li>
-							<div data-src='<!--/category_product_004@image_l/-->'></div>
+							<div><img src='<!--/category_product_004@image_l/-->'></div>
 						</li>
 					</ul>
 				<!--/end_loop/-->
@@ -151,7 +168,7 @@ width:33.33%;
 border:0;
 float:left;
 height:175px;
-padding:3px;
+padding: 2px 2px 5px;
 box-sizing:border-box;
 }
 
@@ -404,15 +421,7 @@ function smartskinNaverMainDisplayLazyLoading_more(){
 		
 
 		$("#naverStyle-MainPrd-inner").html(html);
-		$("#naverStyle-MainPrd-inner").find(".mPrdList").each(function(){
-			$(this).find(".MS_prod_img_s").each(function(i){
-				if(i<6){
-					var data_src=$(this).attr("data-src");
-					$(this).attr("data-src","");
-					$(this).attr("src",data_src);
-				}
-			});
-		});
+
 		
 		$("#naverStyle-MainPrd-inner").show();
 		$('#naverStyleMainPrd').carousel();
@@ -463,3 +472,4 @@ Mobify.$('#naverStyleMainPrd').carousel("move",index);
 				$(this).find(".smartSkinmainDisplayMorebtn").show();
 			});
 		}*/
+Status API Training Shop Blog About ⓒ 2014 GitHub, Inc. Terms Privacy Security Contact 
