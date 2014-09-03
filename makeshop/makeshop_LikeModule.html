@@ -148,37 +148,64 @@ color: #df70ac;
 
 $(document).ready(function(){
   /** 찜하기 기능 **/
-	$("#container.main .items-wrap .items[data-type=horizontal] li").each(function(){		
-		var getStorageSMSdata=localStorage.getItem('SMSWishList');
-		var dataObj = {};
-		var prd_no=$(this).find(".info span").eq(1).text();
-		if(prd_no){
-			var prd_no_arr=prd_no.split("?");
-			prd_no_arr=prd_no_arr[1].split("&");
-			for(var i=0; i<prd_no_arr.length; i++){				
-				var parm_arr=prd_no_arr[i].split("=");
-				if(parm_arr[0]=="branduid")
-					prd_no=parm_arr[1];
+	 if($("#container.main .items-wrap").length){
+		$("#container.main .items-wrap .items[data-type=horizontal] li").each(function(){		
+			var getStorageSMSdata=localStorage.getItem('SMSWishList');
+			var dataObj = {};
+			var prd_no=$(this).find(".info span").eq(1).text();
+			if(prd_no){
+				var prd_no_arr=prd_no.split("?");
+				prd_no_arr=prd_no_arr[1].split("&");
+				for(var i=0; i<prd_no_arr.length; i++){				
+					var parm_arr=prd_no_arr[i].split("=");
+					if(parm_arr[0]=="branduid")
+						prd_no=parm_arr[1];
+				}
 			}
-		}
-		
-		var _this=this;
-		if(getStorageSMSdata){
-			dataObj = JSON.parse(getStorageSMSdata);
 			
-			$.each(dataObj,function(key){
-				$.each(dataObj[key],function(index,val){
-					if(val['prd_no']==prd_no){
-						$(_this).find(".smartskinLikeModule div").removeClass("smartskinLikeModule_off");
-						$(_this).find(".smartskinLikeModule div").addClass("smartskinLikeModule_on");
+			getStorageSMSdataCheck(this,prd_no);	
+		});
+	}
+	
+	if($("#MS_product").length){
+		setTimeout(function(){
+			$("#MS_product .smartskinListPageUIDesign li").each(function(){		
+				
+				var dataObj = {};
+				var prd_no=$(this).find(".info span").eq(1).text();
+				if(prd_no){
+					var prd_no_arr=prd_no.split("?");
+					prd_no_arr=prd_no_arr[1].split("&");
+					for(var i=0; i<prd_no_arr.length; i++){				
+						var parm_arr=prd_no_arr[i].split("=");
+						if(parm_arr[0]=="branduid")
+							prd_no=parm_arr[1];
 					}
-					
-				});
-			});
+				}
 
-		}	
-	});
+				getStorageSMSdataCheck(this,prd_no);
+			});
+		},500);
+	}
 });
+
+function getStorageSMSdataCheck(_this,prd_no){
+	var getStorageSMSdata=localStorage.getItem('SMSWishList');
+	if(getStorageSMSdata){
+		dataObj = JSON.parse(getStorageSMSdata);
+		
+		$.each(dataObj,function(key){
+			$.each(dataObj[key],function(index,val){
+				if(val['prd_no']==prd_no){
+					$(_this).find(".smartskinLikeModule div").removeClass("smartskinLikeModule_off");
+					$(_this).find(".smartskinLikeModule div").addClass("smartskinLikeModule_on");
+				}
+				
+			});
+		});
+
+	}
+}
 
 /** 찜하기 기능 **/
 function smartskinLikeModuleAction(_this){
