@@ -22,6 +22,29 @@
 		</div>
 		<div id="naverStyleMainPrd" class="m-carousel m-fluid m-carousel-photos">
 			<div id="naverStyle-MainPrd-inner" class="m-carousel-inner" >
+
+			</div>
+			<div id="naverStyleMainPrd-btn" class="m-carousel-controls m-carousel-bulleted">
+			</div>
+		</div>	
+		
+		<div class="SMS_BottomModule_09"> <!-- 스마트뷰 BottomModule_09 -->
+			<div class="container_Box cb_clear container">
+				<div class="body">
+					<ul>
+						<li><span onclick="location.href='#top'">더보기</span></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+<!--네이버 스타일 끝 -->
+
+
+<!-- 메인페이지 맨 밑으로 이동 -->
+<div id="naverStyleList001_contaner" >
+		<div id="naverStyleMainPrd" class="m-carousel m-fluid m-carousel-photos">
+			<div id="naverStyle-MainPrd-inner" class="m-carousel-inner" >
 				<div module="product_listnormal">
 					<!--
 						$cate_no=24
@@ -140,17 +163,8 @@
 			</div>
 		</div>	
 		
-		<div class="SMS_BottomModule_09"> <!-- 스마트뷰 BottomModule_09 -->
-			<div class="container_Box cb_clear container">
-				<div class="body">
-					<ul>
-						<li><span onclick="location.href='#top'">더보기</span></li>
-					</ul>
-				</div>
-			</div>
-		</div>
+
 	</div>
-<!--네이버 스타일 끝 -->
 
 
 
@@ -333,7 +347,7 @@ function naverStyleCategoryProduct(id,limit,link_cate,totalLimit){
 		var tab_total=0;
 		
 		
-		_this.find(".grid3").each(function(depth){
+		$("#"+id+"_container").find(".grid3").each(function(depth){
 			var cate_no=$(this).attr('rel');
 			if(cate_no){
 				cate_no=cate_no.split("_");
@@ -407,6 +421,7 @@ function naverStyleCategoryProduct(id,limit,link_cate,totalLimit){
 		$("#"+id+" .m-carousel-inner").html(html);
 		$("#"+id+" .m-carousel-controls").html(btn_html); 
 		$("#"+id+" .naverStyleNav_tab_indicator .indicator").html(tab_html); 
+		$("#"+id+"_container").remove();
 		
 		_this.find(".m-carousel-controls a").eq(0).addClass("m-active");
 		var width=Math.round((100/tab_total)*100)/100+"%";
