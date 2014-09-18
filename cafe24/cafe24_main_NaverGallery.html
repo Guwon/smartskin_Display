@@ -330,8 +330,13 @@ function naverStyleCategoryProduct(id,limit,link_cate,totalLimit){
 		var link_cateArr=link_cate.split(",");
 		var tab_total=0;
 		
+		var _con_el=_this;
+		if($("#"+id+"_container").length)
+			_con_el=$("#"+id+"_container");
 		
-		$("#"+id+"_container").find(".grid3").each(function(depth){
+		
+		
+		$(_con_el).find(".grid3").each(function(depth){
 			var cate_no=$(this).attr('rel');
 			if(cate_no){
 				cate_no=cate_no.split("_");
@@ -405,7 +410,8 @@ function naverStyleCategoryProduct(id,limit,link_cate,totalLimit){
 		$("#"+id+" .m-carousel-inner").html(html);
 		$("#"+id+" .m-carousel-controls").html(btn_html); 
 		$("#"+id+" .naverStyleNav_tab_indicator .indicator").html(tab_html); 
-		$("#"+id+"_container").remove();
+		if($("#"+id+"_container").length)
+			$("#"+id+"_container").remove();
 		
 		_this.find(".m-carousel-controls a").eq(0).addClass("m-active");
 		var width=Math.round((100/tab_total)*100)/100+"%";
