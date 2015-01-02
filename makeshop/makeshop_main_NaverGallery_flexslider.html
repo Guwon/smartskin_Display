@@ -20,8 +20,8 @@
 
 			</ul> 
 		</div>
-		<div id="naverStyleMainPrd" class="m-carousel m-fluid m-carousel-photos">
-			<div id="naverStyle-MainPrd-inner" class="m-carousel-inner" style="-webkit-transform: translate3d(0px, 0, 0);">
+		<div id="naverStyleMainPrd">
+			<div id="naverStyle-MainPrd-inner" >
 				<div class="flexslider" data-type="001">
 				<!--/loop_category_product_001/-->
 					<ul class="grid" onclick="document.location='<!--/category_product_001@link/-->'">
@@ -115,8 +115,7 @@
 				<!--/end_loop/-->
 				</div>
 			</div>
-			<div id="naverStyleMainPrd-btn" class="m-carousel-controls m-carousel-bulleted">
-			</div>
+
 		</div>	
 		
 		<div class="SMS_BottomModule_09"> <!-- 스마트뷰 BottomModule_09 -->
@@ -345,7 +344,6 @@ function naverStyleCategoryProduct(id,limit,link_cate,totalLimit){
 		//$("#"+id+" .m-carousel-controls").html(btn_html); 
 		//$("#"+id+" .naverStyleNav_tab_indicator .indicator").html(tab_html); 
 		
-		_this.find(".m-carousel-controls a").eq(0).addClass("m-active");
 		var width=Math.round((100/tab_total)*100)/100+"%";
 		_this.find(".naverStyleNav_tab li").css("width",width);
 		_this.find(".naverStyleNav_tab_indicator .indicator li").css("width",width);
